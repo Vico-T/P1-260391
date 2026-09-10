@@ -1,8 +1,14 @@
 function setup() {
-  createCanvas(400, 400);
-}
+  createCanvas(600, 400);
+  }
 
 function draw() {
-  background(220);
-  circle (200,200,200)
+  background(50,180,250,100);
+  textSize(20);
+   push();
+  angle1 = radians(270);
+  translate(200,180);
+  rotate(angle1);
+  text('kast',252,476);
+  pop();
 }

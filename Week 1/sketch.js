@@ -6,7 +6,9 @@ function draw() {
   background(220);
   fill('black');
   //opdracht 1
+  textSize(10);
   text('1 Vico Tukker',10,10)
+  //rest van de text staat hier ook zodat het allemaal het zelfde is zonder dat ik het steeds dezelfde code moet schrijven
   text('2',10,50)
   text('3',10,120);
   text('4',10,210);
@@ -15,43 +17,64 @@ function draw() {
   text('7 Mario',220,20);
   text('8 Yi',500,20);
    text('9 cover art guns for hands',500,350);
-   text('10 mijn logo',500,500);
+   text('10 zeilboot met het zuiderkruis als mast (mijn logo) ',500,500);
+   text('11 mijn droomhuis',250,250);
+   text('plattegrond',250,380);
+   text('deur           raam',252,510);
+
   //opdracht 2
+  //new strokeWeight
+  strokeWeight(0);
+  //new fill
   fill('green');
   rect(20,40,100,50);
   strokeWeight(0);
+  //new fill
   fill('orange');
   rect(20,60,100,10);
   rect(65,40,10,50);
-  fill('black');
+
   //opdracht 3
+  //new fill en strokeWeight
   fill('white');
   strokeWeight(2);
   square(20,110,71);
+  //new fill
   fill('black');
   square(20,110,24);
   square(46,135,20);
   square(68,110,23);
   square(20,157,24);
   square(68,157,23);
+
   //opdracht 4
+  //new fill
   noFill()
   triangle(20,250,50,210,80,250);
   square(20,250,60);
+
   //opdracht 5
+  //new fill
   fill('gray');
   rect(150,10,30,80);
   rect(158,90,15,50);
+  //new fill
   fill('red');
   circle(165,25,20);
+  //new fill
   fill('orange')
   circle(165,50,20);
+  //new fill
   fill('green');
   circle(165,75,20);
+
   //opdracht 6
+  //new strokeWeight
   strokeWeight(2);
+  //new fill
   fill('white');
   square(150,170,50,10);
+  //new fill
   fill('black');
   //rechts
   circle(165,180,10);
@@ -61,8 +84,10 @@ function draw() {
   circle(185,180,10);
   circle(185,195,10);
   circle(185,210,10);
+
   //opdracht 7
   strokeWeight(0);
+  //new fill
   fill(355,204,153);
   rect(350,50,60,40);
   rect(340,60,10,20);
@@ -71,6 +96,7 @@ function draw() {
   rect(450,70,10,10);
   rect(320,130,30,30);
   rect(410,130,30,30);
+  //new fill
   fill('brown');
   rect(340,50,30,10);
   rect(350,60,10,20);
@@ -81,10 +107,12 @@ function draw() {
   rect(320,180,10,10);
   rect(400,170,30,20);
   rect(430,180,10,10);
+  //new fill
   fill('black');
   rect(400,80,50,10);
   rect(400,50,10,20);
   rect(410,70,10,10);
+  //new fill
     fill('red');
   rect(350,30,60,20);
   rect(340,40,110,10);
@@ -92,6 +120,7 @@ function draw() {
   rect(330,110,100,20);
   rect(320,120,120,10);
   rect(410,130,10,10);
+  //new fill
   fill('blue');
   rect(350,130,60,30);
   rect(360,120,40,10);
@@ -99,10 +128,13 @@ function draw() {
   rect(390,110,10,10);
   rect(340,150,30,20);
   rect(390,150,30,20);
+  //new fill
   fill('yellow');
   rect(360,130,10,10);
   rect(390,130,10,10);
+
   //opdracht 8
+  //new fill
   fill(255,255,203);
   rect(580,60,20,240);
   rect(620,60,20,240);
@@ -240,7 +272,16 @@ function draw() {
   fill(254,255,235);
   rect(580,130,10,20)
   rect(660,140,10,10);
+
   //opdracht 9
+  //new fill
+  fill('lightblue')
+  //new strokeWeight
+  strokeWeight(2)
+  rect(500,360,200,110);
+  //new strokeWeight
+  strokeWeight(0);
+  //new fill
   fill(253,208,175);
   rect(530,380,20,50,2);
   rect(530,400,100,60,2);
@@ -254,38 +295,46 @@ function draw() {
     //new fill
   fill('black');
   rect(590,400,30,14);
+  //new strokeWeight
   strokeWeight(1);
   line(560,400,555,422);
   line(565,400,560,422);
   line(570,400,565,422);
   line(575,400,570,422);
+  //new strokeWeight
   strokeWeight(0.5);
   line(535,398,545,398);
   line(532,395,548,395);
   line(535,392,545,392);
   line(640,425,640,435);
   line(645,426,645,434);
+  //new strokeWeight
   strokeWeight(0);
   //new fill
   fill('silver');
   rect(590,402,30,10);
   rect(670,395,10,5)
   triangle(665,400,670,395,670,400,2);
+  //new strokeWeight
   strokeWeight(1)
    line(600,404,600,410);
    line(602,407,604,407);
    line(606,410,608,404);
+   //new strokeWeight
    strokeWeight(0);
   //new fill
   fill(175,125,121);
   rect(534,372,12,10);
   ellipse(540,371,12,12);
+
   //opdracht 10
-  strokeWeight(5);
+  //new strokeWeight
+  strokeWeight(6);
   point(550,520);
   point(550,590);
   point(520,540);
   point(580,540);
+  //new strokeWeight
   strokeWeight(2);
   line(500,590,620,590);
   line(550,520,550,590);
@@ -303,9 +352,80 @@ function draw() {
   line(590,580,605,590);
   line(610,585,622,585);
   line(622,585,622,610);
+  //new strokeWeight
   strokeWeight(0);
   //new fill
   fill('black');
   square(622,601,10);
   circle(632,606,10);
+
+  //opdracht 11
+  //new strokeWeight
+  strokeWeight(2);
+  //new fill
+  fill('green');
+  rect(240,320,120,50);
+  //new fill
+  fill('brown');
+  rect(250,300,100,50);
+  line(251,308,349,308);
+  line(251,317,349,317);
+  line(251,326,349,326);
+  line(251,335,349,335);
+  line(251,344,349,344);
+  rect(255,320,15,30);
+  point(267,335,12);
+  //new strokeWeight
+  strokeWeight(1);
+  line(267,335,265,335);
+  triangle(250,300,300,280,350,300);
+  triangle(250,300,300,280,250,290);
+  triangle(350,300,300,280,350,290);
+  //new fill
+  fill('blue');
+  rect(290,320,50,20);
+
+  //plattegrond
+  //new fill
+  fill('white')
+  square(250,400,100);
+  rect(250,400,20,60);
+  ellipse(320,420,40,15);
+  circle(305,409,7);
+  circle(320,407,7);
+  circle(335,409,7);
+  circle(305,431,7);
+  circle(320,433,7);
+  circle(335,431,7);
+  circle(330,480,30);
+  rect(340,460,10,40);  
+  rect(340,460,10,5);
+  rect(340,495,10,5);
+  rect(348,460,2,40);
+  rect(275,495,20,5);
+  line(252,465,256,469);
+  line(252,469,256,465)
+  line(252,467,256,467);
+  line(254,465,254,469);
+  rect(250,470,5,20);
+  rect(250,400,20,20);
+  square(253,425,15,2);
+  //new strokeWeight
+  strokeWeight(1);
+  line(240,462,252,464);
+  //new strokeWeight
+  strokeWeight(2)
+  line(255,500,270,500);
+  line(300,500,345,500);
+  line(252,432,256,432);
+  //new strokeWeight
+  strokeWeight(5);
+  point(255,405);
+  point(255,415);
+  point(265,405);
+  point(265,415);
+  textSize(5);
+  fill('black');
+  text('kast',280,499);
+  text('kapstok',225,460);
 }
