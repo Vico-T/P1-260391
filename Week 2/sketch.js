@@ -1,13 +1,18 @@
-let speed = 2;
-let x = 0;
+let speed = 1.5;
+let sunx = -50;
+let moonx = -50;
 let truckposition = -300;
 let cabrioposition = -200;
 let jeepposition = 1000;
 let cloudpositionLeft = 1000;
 let cloudpositionRight = -200
+let straatstreep = 0;
+let straatstreepSpeed = 1;
 let daglicht = 'lightblue'
 let ochtend = 'orange'
+let nacht = 'black'
 let gebouw = 'lightgrey'
+
 
 function setup() {
   createCanvas(800, 600);
@@ -15,13 +20,39 @@ function setup() {
 
 
 function draw() {
-  background(daglicht)
-  fill('yellow');
-  circle(x,40,50);
-  x += speed;
-  if(x == 850){
-    x != speed
+  //dag
+  if(sunx >= -49 && sunx <=200 || sunx >=600){
+  background(ochtend)
   }
+  if(sunx >=200 && sunx <=600){
+    background(daglicht)
+  }
+  fill('yellow');
+  circle(sunx,40,50);
+  sunx += speed;
+  if(sunx >= 900){
+    sunx != speed
+  }
+  if(moonx >= 800){
+    sunx = -50
+  }
+  // if(sunx >=-50 && sunx <= 900){
+  //   sunx += speed
+  // }
+
+
+  //nacht
+  if(sunx >= 800){
+    background(nacht)
+  fill('white');
+  circle(moonx,40,50);
+  moonx += speed
+  if(moonx == 850){
+  moonx != speed
+  }
+}
+
+
 
   //wolken
   noStroke();
@@ -38,7 +69,7 @@ function draw() {
   circle(80 +cloudpositionRight,60,50);
   circle(120 +cloudpositionRight,80,50);
   circle(100 +cloudpositionRight,100,50);
-  cloudpositionRight = cloudpositionRight +1,5
+  cloudpositionRight = cloudpositionRight +1,2
 
   stroke('black');
   strokeWeight(1);
@@ -126,7 +157,7 @@ function draw() {
   rect(640,500,30,10);
   //9
   rect(730,500,30,10);
-
+  
   
   //neon bord
   //sushi
@@ -252,5 +283,4 @@ function draw() {
   circle(710,515,8);
   fill('green');
   circle(710,530,8);
-
 }
