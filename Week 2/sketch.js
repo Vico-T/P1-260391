@@ -3,13 +3,17 @@ let x = 0;
 let truckposition = -300;
 let cabrioposition = -200;
 let jeepposition = 1000;
-
+let cloudpositionLeft = 1000;
+let cloudpositionRight = -200
+let daglicht = 'lightblue'
+let ochtend = 'orange'
+let gebouw = 'lightgrey'
 
 function setup() {
   createCanvas(800, 600);
 }
-let daglicht = 'lightblue'
-let gebouw = 'lightgrey'
+
+
 function draw() {
   background(daglicht)
   fill('yellow');
@@ -18,6 +22,23 @@ function draw() {
   if(x == 850){
     x != speed
   }
+
+  //wolken
+  noStroke();
+  fill('white');
+  circle(60 +cloudpositionLeft,100,50);
+  circle(80 +cloudpositionLeft,80,50);
+  circle(120 +cloudpositionLeft,100,50);
+  circle(100 +cloudpositionLeft,120,50);
+  cloudpositionLeft = cloudpositionLeft -2
+
+  noStroke();
+  fill('white');
+  circle(60 +cloudpositionRight,80,50);
+  circle(80 +cloudpositionRight,60,50);
+  circle(120 +cloudpositionRight,80,50);
+  circle(100 +cloudpositionRight,100,50);
+  cloudpositionRight = cloudpositionRight +1,5
 
   stroke('black');
   strokeWeight(1);
@@ -215,4 +236,21 @@ function draw() {
   if(truckposition >800){
     truckposition = truckposition -5
   }
+
+
+  //stoplicht
+   noFill();
+  fill('lightblue');
+  rect(705,562,10,5)
+  rect(706,568,8,3);
+  fill('black');
+  rect(700,490,20,50);
+  rect(704,540,12,23)
+  fill('red');
+  circle(710,500,8)
+  fill('orange');
+  circle(710,515,8);
+  fill('green');
+  circle(710,530,8);
+
 }
