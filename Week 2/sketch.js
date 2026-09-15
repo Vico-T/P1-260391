@@ -1,4 +1,9 @@
-let speed = 3;
+let speed = 2;
+let x = 0;
+let truckposition = -300;
+let cabrioposition = -200;
+let jeepposition = 1000;
+
 
 function setup() {
   createCanvas(800, 600);
@@ -7,6 +12,13 @@ let daglicht = 'lightblue'
 let gebouw = 'lightgrey'
 function draw() {
   background(daglicht)
+  fill('yellow');
+  circle(x,40,50);
+  x += speed;
+  if(x == 850){
+    x != speed
+  }
+
   stroke('black');
   strokeWeight(1);
   fill(gebouw);
@@ -39,61 +51,62 @@ function draw() {
     noStroke();
   //1
   fill('lightblue');
-  rect(11,459,28,5);
-  rect(15,465,20,4);
-  rect(19,471,12,2);
+  rect(11,509,28,5);
+  rect(15,515,20,4);
+  rect(19,521,12,2);
   //2
-  rect(101,459,28,5);
-  rect(105,465,20,4);
-  rect(109,471,12,2);
+  rect(101,509,28,5);
+  rect(105,515,20,4);
+  rect(109,521,12,2);
   //3
-  rect(191,459,28,5);
-  rect(195,465,20,4);
-  rect(199,471,12,2);
+  rect(191,509,28,5);
+  rect(195,515,20,4);
+  rect(199,521,12,2);
   //4
-  rect(281,459,28,5);
-  rect(285,465,20,4);
-  rect(289,471,12,2);
+  rect(281,509,28,5);
+  rect(285,515,20,4);
+  rect(289,521,12,2);
   //5
-  rect(371,459,28,5);
-  rect(375,465,20,4);
-  rect(379,471,12,2);
+  rect(371,509,28,5);
+  rect(375,515,20,4);
+  rect(379,521,12,2);
   //6
-  rect(461,459,28,5);
-  rect(465,465,20,4);
-  rect(469,471,12,2);
+  rect(461,509,28,5);
+  rect(465,515,20,4);
+  rect(469,521,12,2);
   //7
-  rect(551,459,28,5);
-  rect(555,465,20,4);
-  rect(559,471,12,2);
+  rect(551,509,28,5);
+  rect(555,515,20,4);
+  rect(559,521,12,2);
   //8
-  rect(641,459,28,5);
-  rect(645,465,20,4);
-  rect(649,471,12,2);
+  rect(641,509,28,5);
+  rect(645,515,20,4);
+  rect(649,521,12,2);
   //9
-  rect(731,459,28,5)
-  rect(735,465,20,4)
-  rect(739,471,12,2);
+  rect(731,509,28,5)
+  rect(735,515,20,4)
+  rect(739,521,12,2);
   fill('white')
   //1
-  rect(10,450,30,10);
+  rect(10,500,30,10);
   //2
-  rect(100,450,30,10);
+  rect(100,500,30,10);
   //3
-  rect(190,450,30,10)
+  rect(190,500,30,10)
   //4
-  rect(280,450,30,10);
+  rect(280,500,30,10);
   //5
-  rect(370,450,30,10);
+  rect(370,500,30,10);
   //6
-  rect(460,450,30,10);
+  rect(460,500,30,10);
   //7
-  rect(550,450,30,10);
+  rect(550,500,30,10);
   //8
-  rect(640,450,30,10);
+  rect(640,500,30,10);
   //9
-  rect(730,450,30,10);
+  rect(730,500,30,10);
 
+  
   //neon bord
   //sushi
   strokeWeight(2);
@@ -107,6 +120,7 @@ function draw() {
   textSize(50);
   noFill();
   text('sushi',210,380);
+  
   //poker
   stroke(2);
   line(550,65,558,65);
@@ -133,60 +147,72 @@ function draw() {
   //auto's
   //cabrio
   noStroke();
+  cabrioposition = cabrioposition + 8;
   fill('blue');
-  triangle(95,500,85,494,85,500)
+  triangle(95 +cabrioposition,500,85 +cabrioposition,494,85 +cabrioposition,500)
   fill('lightblue');
-  rect(55,509,40,5);
-  rect(65,518,20,4);
-  rect(73,527,5,2);
+  rect(55 +cabrioposition,509,40,5);
+  rect(65 +cabrioposition,518,20,4);
+  rect(73 +cabrioposition,527,5,2);
   fill('orange');
   stroke('black');
   strokeWeight(1)
-  rect(50,500,50,10,3);
+  rect(50 +cabrioposition,500,50,10,3);
+  if(cabrioposition > 800){
+    cabrioposition = cabrioposition -8
+  }
   
   //jeep
   strokeWeight(0);
+  jeepposition = jeepposition - 6
   fill('lightblue')
-  rect(97,558,10,5);
-  rect(99,564,6,3);
-  rect(135,558,10,5);
-  rect(137,564,6,3);
+  rect(97 +jeepposition,558,10,5);
+  rect(99 +jeepposition,564,6,3);
+  rect(135 +jeepposition,558,10,5);
+  rect(137 +jeepposition,564,6,3);
   fill('green');
   strokeWeight(0);
-  rect(94,550,56,10,3);
-  rect(94,540,36,20);
-  triangle(140,550,130,540,130,550);
+  rect(94 +jeepposition,550,56,10,3);
+  rect(94 +jeepposition,540,36,20);
+  triangle(140 +jeepposition,550,130 +jeepposition,540,130 +jeepposition,550);
   fill('lightblue');
-  triangle(131,548,131,542,138,548);
-  rect(119,541,8,8);
-  rect(109,541,8,8);
-  rect(96,541,11,8);
+  triangle(131 +jeepposition,548,131 +jeepposition,542,138 +jeepposition,548);
+  rect(119 +jeepposition,541,8,8);
+  rect(109 +jeepposition,541,8,8);
+  rect(96 +jeepposition,541,11,8);
   strokeWeight(1);
-  line(108,539,108,549);
-  line(95,539,95,549);
-  line(128,539,128,549);
+  line(108 +jeepposition,539,108 +jeepposition,549);
+  line(95 +jeepposition,539,95 +jeepposition,549);
+  line(128 +jeepposition,539,128 +jeepposition,549);
   strokeWeight(2);
-  line(94,539,129,539);
+  line(94 +jeepposition,539,129 +jeepposition,539);
+  if(jeepposition ==-500){
+    jeepposition = jeepposition +6
+  }
 
-  vrachtwagen
+  //vrachtwagen
   noStroke();
   fill('lightblue');
-  rect(155,468,20,6);
-  rect(158,475,15,4)
-  rect(160,480,10,3)
-  rect(208,468,20,6);
-  rect(211,475,15,4);
-  rect(213,480,10,3);
-  rect(230,468,20,6)
-  rect(233,475,15,4);
-  rect(235,480,10,3);
-  rect(260,468,10,6)
-  rect(262,475,6,4);
-  rect(263,480,4,3)
+  truckposition = truckposition + 5;
+  rect(155 +truckposition,468,20,6);
+  rect(158 +truckposition,475,15,4)
+  rect(160 +truckposition,480,10,3)
+  rect(208 +truckposition,468,20,6);
+  rect(211 +truckposition,475,15,4);
+  rect(213 +truckposition,480,10,3);
+  rect(230 +truckposition,468,20,6)
+  rect(233 +truckposition,475,15,4);
+  rect(235 +truckposition,480,10,3);
+  rect(260 +truckposition,468,10,6)
+  rect(262 +truckposition,475,6,4);
+  rect(263 +truckposition,480,4,3)
   fill('blue');
-  rect(150,450,100,20);
+  rect(150 +truckposition,450,100,20);
   fill('red');
-  rect(251,450,10,20,2)
-  rect(251,460,20,10)
-  rect(230,465,22,5)
+  rect(251 +truckposition,450,10,20,2)
+  rect(251 +truckposition,460,20,10)
+  rect(230 +truckposition,465,22,5)
+  if(truckposition >800){
+    truckposition = truckposition -5
+  }
 }
