@@ -12,12 +12,43 @@ let daglicht = 'lightblue'
 let ochtend = 'orange'
 let nacht = 'black'
 let gebouw = 'lightgrey'
+let licht = 710;
+let color = 'red'
+let colorgreen = 'green'
+let colororange = 'orange'
 
 
 function setup() {
   createCanvas(800, 600);
 }
 
+function keyPressed() {
+//stoplicht 
+  if (keyCode == 13) {
+    if (color === 'red') {
+      color = 'black'
+    }
+    else if (colororange === 'orange') {
+      color = 'red'
+    }
+  }
+  if (keyCode == 13) {
+    if (colorgreen === 'green') {
+      colorgreen = 'black'
+    }
+    else if (colorgreen === color) {
+      colorgreen = 'green'
+    }
+  }
+  if (keyCode == 13) {
+    if (colororange === 'orange') {
+      colororange = 'black'
+    }
+    else if (colororange === colorgreen) {
+      colororange = 'orange'
+    }
+  }
+}
 
 function draw() {
   //dag
@@ -32,11 +63,12 @@ function draw() {
   sunx += speed;
   if(sunx >= 900){
     sunx != speed
+    sunx = 0
   }
   if(moonx >= 800){
     sunx = -50
   }
-  // if(sunx >=-50 && sunx <= 900){
+  // if(sunx >=-100 && sunx <= 900){
   //   sunx += speed
   // }
 
@@ -97,7 +129,69 @@ function draw() {
   rect(500,320,100,280);
   //gebouw
   rect(750,80,55,520);
+
+  fill(37,150,190);
+  //gebouw 1
+  rect(10,120,20,10);
+  rect(10,140,20,10);
+  rect(10,160,20,10);
+  rect(10,180,20,10);
+  rect(10,200,20,10);
+  rect(10,220,20,10);
+  rect(10,240,20,10);
+  rect(10,260,20,10);
+  rect(10,280,20,10);
+  rect(10,300,20,10);
+  rect(10,320,20,10);
+  rect(10,340,20,10);
+  rect(10,360,20,10);
+  rect(10,380,20,10);
+  rect(10,400,20,10);
+  rect(10,420,20,10);
+  rect(10,440,20,10);
+  rect(10,460,20,10);
+  rect(10,480,20,10);
+  rect(10,500,20,10);
+  rect(10,520,20,10);
+  rect(10,540,20,10);
+  rect(10,560,20,10);
+  rect(10,580,20,10);
   
+  //gebouw 2
+  rect(60,260,20,10);
+  rect(60,280,20,10);
+  rect(60,300,20,10);
+  rect(60,320,20,10);
+  rect(60,340,20,10);
+  rect(60,360,20,10);
+  rect(60,380,20,10);
+  rect(60,400,20,10);
+  rect(60,420,20,10);
+  rect(60,440,20,10);
+  rect(60,460,20,10);
+  rect(60,480,20,10);
+  rect(60,500,20,10);
+  rect(60,520,20,10);
+  rect(60,540,20,10);
+  rect(60,560,20,10);
+  rect(60,580,20,10);
+  rect(100,260,20,10);
+  rect(100,280,20,10);
+  rect(100,300,20,10);
+  rect(100,320,20,10);
+  rect(100,340,20,10);
+  rect(100,360,20,10);
+  rect(100,380,20,10);
+  rect(100,400,20,10);
+  rect(100,420,20,10);
+  rect(100,440,20,10);
+  rect(100,460,20,10);
+  rect(100,480,20,10);
+  rect(100,500,20,10);
+  rect(100,520,20,10);
+  rect(100,540,20,10);
+  rect(100,560,20,10);
+  rect(100,580,20,10);
 
   //straat strepen
     noStroke();
@@ -270,17 +364,19 @@ function draw() {
 
 
   //stoplicht
-   noFill();
   fill('lightblue');
   rect(705,562,10,5)
   rect(706,568,8,3);
-  fill('black');
+  fill('grey');
   rect(700,490,20,50);
-  rect(704,540,12,23)
-  fill('red');
-  circle(710,500,8)
-  fill('orange');
-  circle(710,515,8);
-  fill('green');
-  circle(710,530,8);
+  rect(704,540,12,23);
+
+  fill(color);
+  circle(licht,500,8);
+
+  fill(colorgreen);
+  circle(licht,530,8);
+
+  fill(colororange);
+  circle(licht,515,8);
 }
