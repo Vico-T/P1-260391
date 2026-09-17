@@ -241,9 +241,19 @@ function draw() {
 
   //gebouw 2
   fill(gebouw);
+
   rect(40, 250, 100, 350);
   //new fill
-  fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
+  // fill(37, 150, 190);
   rect(60, 260, 20, 10);
   rect(60, 280, 20, 10);
   rect(60, 300, 20, 10);
@@ -307,21 +317,65 @@ function draw() {
   circle(485,140,30);
   triangle(461,190,475,130,489,190);
 
+//new fill
+fill(37, 150, 190);
+rect(420,320,110,200);
+//new fill
+fill('red');
+text('A',425,350);
+text('A',505,510)
+noStroke();
+triangle(435,360,435,380,430,370);
+triangle(435,360,435,380,440,370);
 
-  //gebouw 9
+triangle(515,480,515,460,510,470);
+triangle(515,480,515,460,520,470);
+
+triangle(475,370,475,470,450,420);
+triangle(475,370,475,470,500,420);
+stroke(1);
+
+
+//gebouw 9
+if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
+circle(645,180,130);
+//new fill
   fill(gebouw);
   rect(580, 180, 130, 420);
   //new fill
   fill(37, 150, 190);
-
-
+rect(600,180,20,500);
+rect(670,180,20,500);
+//new fill
+fill('silver');
+rect(600,390,20,30);
+rect(670,230,20,30);
+strokeWeight(2);
+line(620,120,620,180);
+line(670,120,670,180);
+line(605,130,685,130);
+line(585,160,705,160);
+stroke('blue')
+textSize(25);
+text('restaurant',590,200);
+stroke('black')
+strokeWeight(1);
 
   //gebouw 10
   fill(gebouw);
   rect(680, 500, 100, 100);
   //new fill
   fill(37, 150, 190);
-
+square(690,510,50);
+square(690,570,50);
 
 
   //gebouw 8
@@ -336,47 +390,16 @@ function draw() {
   arc(550,535,70,100,5,39);
 
 
-  //gebouw
+  //gebouw 11
   stroke(1); 
   fill(gebouw);
   rect(750, 80, 55, 520);
   fill(37, 150, 190);
-
-
-  //gebouw 1
-  // rect(10,120,20,10);
-  // rect(10,140,20,10);
-  // rect(10,160,20,10);
-  // rect(10,180,20,10);
-  // rect(10,200,20,10);
-  // rect(10,220,20,10);
-  // rect(10,240,20,10);
-  // rect(10,260,20,10);
-  // rect(10,280,20,10);
-  // rect(10,300,20,10);
-  // rect(10,320,20,10);
-  // rect(10,340,20,10);
-  // rect(10,360,20,10);
-  // rect(10,380,20,10);
-  // rect(10,400,20,10);
-  // rect(10,420,20,10);
-  // rect(10,440,20,10);
-  // rect(10,460,20,10);
-  // rect(10,480,20,10);
-  // rect(10,500,20,10);
-  // rect(10,520,20,10);
-  // rect(10,540,20,10);
-  // rect(10,560,20,10);
-  // rect(10,580,20,10);
-
-
-
-
-
-
-
-
-  
+rect(760,90,60,200);
+rect(760,300,60,20);
+rect(760,330,60,200);
+rect(760,540,60,20);
+rect(760,570,60,50);
 
 
 
