@@ -1,4 +1,4 @@
-let speed = 1;
+let speed = 1.5;
 let sunx = -50;
 let moonx = -50;
 let truckposition = -300;
@@ -54,7 +54,7 @@ function draw() {
     fill('white');
     circle(moonx, 40, 50);
     moonx += speed
-    if (moonx > 850) {
+    if (moonx > 855) {
       moonx = -50
     }
   }
@@ -90,8 +90,6 @@ function draw() {
   //van links naar rechts worden de gebouwen opgeteld geteld
   //gebouw 3
   rect(70, 150, 150, 450);
-  //new fill
-  //fill(37, 150, 190);
     if(sunx >= -50 && sunx <= 849){
 fill(37, 150, 190)
 }
@@ -160,8 +158,6 @@ else if(moonx >= 200 && moonx <= 855){
   //gebouw 5
   fill(gebouw);
   rect(280, 120, 100, 480);
-  //new fill
-  //fill(37, 150, 190);
     if(sunx >= -50 && sunx <= 849){
 fill(37, 150, 190)
 }
@@ -197,8 +193,6 @@ else if(moonx >= 200 && moonx <= 855){
   //gebouw 6
   fill(gebouw);
   rect(320, 260, 200, 340);
-  //new fill
-  //fill(37, 150, 190);
     if(sunx >= -50 && sunx <= 849){
 fill(37, 150, 190)
 }
@@ -226,8 +220,6 @@ else if(moonx >= 200 && moonx <= 855){
   //gebouw 4
   fill(gebouw);
   rect(200, 400, 150, 200);
-  //new fill
-  //fill(37, 150, 190);
     if(sunx >= -50 && sunx <= 849){
 fill(37, 150, 190)
 }
@@ -247,12 +239,10 @@ else if(moonx >= 200 && moonx <= 855){
   //gebouw 1
   fill(gebouw);
   rect(0, 100, 50, 500);
-  //new fill
-  //fill(37, 150, 190);
   if(sunx >= -50 && sunx <= 849){
 fill(37, 150, 190)
 }
-else if(moonx >= -48 && moonx <= 200){
+else if(moonx >= -49 && moonx <= 200){
   fill('yellow')
 }
 else if(moonx >= 200 && moonx <= 855){
@@ -272,12 +262,6 @@ else if(moonx >= 200 && moonx <= 855){
   rect(10, 340, 20, 10);
   rect(10, 360, 20, 10);
   rect(10, 380, 20, 10);
-  if(moonx >= -48 && moonx <= 300){
-  fill('yellow')
-}
- else if(moonx >= 300 && moonx <= 855){
-  fill('darkblue')
-}
   rect(10, 400, 20, 10);
   rect(10, 420, 20, 10);
   rect(10, 440, 20, 10);
@@ -391,7 +375,7 @@ stroke(1);
 if(sunx >= -50 && sunx <= 849){
 fill(37, 150, 190)
 }
-else if(moonx >= -48 && moonx <= 200){
+else if(moonx >= -48 && moonx <= 400){
   fill('yellow')
 }
 else if(moonx >= 200 && moonx <= 855){
@@ -401,12 +385,11 @@ circle(645,180,130);
 //new fill
   fill(gebouw);
   rect(580, 180, 130, 420);
-  //new fill
-  //fill(37, 150, 190);
+
     if(sunx >= -50 && sunx <= 849){
 fill(37, 150, 190)
 }
-else if(moonx >= -48 && moonx <= 200){
+else if(moonx >= -48 && moonx <= 400){
   fill('yellow')
 }
 else if(moonx >= 200 && moonx <= 855){
