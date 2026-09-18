@@ -13,7 +13,10 @@ let nacht = 'black'
 let gebouw = 'lightgrey'
 let licht = 710;
 let stoplichtstatus = 0;
-let liftlinks = 1
+let liftlinks = 180
+let liftrechts = 650
+let liftlinkstop = true
+let liftrechtstop = true
 
 function setup() {
   createCanvas(800, 600);
@@ -58,96 +61,163 @@ function draw() {
     }
     stroke('white')
     strokeWeight(3)
-    point(30,30);
-    point(40,70);
-    point(10,40);
-    point(40,90);
-    point(60,110);
-    point(50,50);
-    point(100,70);
-    point(90,40);
-    point(105,60);
-    point(112,90);
-    point(130,25);
-    point(190,42);
-    point(202,34);
-    point(210,20);
-    point(225,140);
-    point(208,35);
-    point(196,43);
-    point(227,128);
-    point(210,100);
-    point(214,57);
-    point(230,111);
-    point(232,98);
-    point(236,99);
-    point(234,90);
-    point(240,62);
-    point(239,93);
-    point(245,80);
-    point(247,32);
-    point(253,52);
-    point(256,18);
-    point(259,23);
-    point(263,80);
-    point(270,56);
-    point(278,43);
-    point(285,33);
-    point(290,78);
-    point(293,29);
-    point(302,40);
-    point(310,52);
-    point(317,80);
-    point(323,32);
-    point(332,10);
-    point(334,54);
-    point(340,69);
-    point(344,47);
-    point(349,18);
-    point(354,32);
-    point(359,72);
-    point(361,112);
-    point(364,103);
-    point(367,870);
-    point(370,50);
-    point(372,69);
-    point(378,17);
-    point(384,39);
-    point(390,48);
-    point(394,70);
-    point(400,40);
-    point(402,8);
-    point(405,22);
-    point(410,37);
-    point(412,48);
-    point(420,28);
-    point(424,31);
-    point(430,40);
-    point(436,26);
-    point(440,18);
-    point(446,42);
-    point(452,36);
-    point(458,26);
-    point(460,8);
-    point(464,14);
-    point(469,28);
-    point(474,49);
-    point(480,43);
-    point(484,27);
-    point(487,16);
-    point(493,42);
-    point(502,36);
-    point(508,18);
-    point(514,24);
-    point(520,20);
-    point(527,32);
-    point(532,12);
-    point(539,46);
-    point(543,50);
-    point(553,156);
-    point(558,52);
-    point(564,102);
-    point(569,110);
+    point(10, 40);
+    point(13, 22);
+    point(16, 45);
+    point(19, 32);
+    point(23, 42);
+    point(28, 10);
+    point(30, 30);
+    point(34, 53);
+    point(40, 70);
+    point(42, 90);
+    point(47, 20);
+    point(50, 50);
+    point(54, 84);
+    point(59, 69);
+    point(60, 110);
+    point(63, 31);
+    point(68, 63);
+    point(71, 50);
+    point(75, 20);
+    point(77, 44);
+    point(80, 10);
+    point(82, 65);
+    point(85, 86);
+    point(88, 30);
+    point(90, 40);
+    point(100, 70);
+    point(105, 60);
+    point(112, 90);
+    point(130, 25);
+    point(190, 42);
+    point(202, 34);
+    point(210, 20);
+    point(225, 140);
+    point(208, 35);
+    point(196, 43);
+    point(227, 128);
+    point(210, 100);
+    point(214, 57);
+    point(230, 111);
+    point(232, 98);
+    point(236, 99);
+    point(234, 90);
+    point(240, 62);
+    point(239, 93);
+    point(245, 80);
+    point(247, 32);
+    point(253, 52);
+    point(256, 18);
+    point(259, 23);
+    point(263, 80);
+    point(270, 56);
+    point(278, 43);
+    point(285, 33);
+    point(290, 78);
+    point(293, 29);
+    point(302, 40);
+    point(310, 52);
+    point(317, 80);
+    point(323, 32);
+    point(332, 10);
+    point(334, 54);
+    point(340, 69);
+    point(344, 47);
+    point(349, 18);
+    point(354, 32);
+    point(359, 72);
+    point(361, 112);
+    point(364, 103);
+    point(367, 870);
+    point(370, 50);
+    point(372, 69);
+    point(378, 17);
+    point(384, 39);
+    point(390, 48);
+    point(394, 70);
+    point(400, 40);
+    point(402, 8);
+    point(405, 22);
+    point(410, 37);
+    point(412, 48);
+    point(420, 28);
+    point(424, 31);
+    point(430, 40);
+    point(436, 26);
+    point(440, 18);
+    point(446, 42);
+    point(452, 36);
+    point(458, 26);
+    point(460, 8);
+    point(464, 14);
+    point(469, 28);
+    point(474, 49);
+    point(480, 43);
+    point(484, 27);
+    point(487, 16);
+    point(493, 42);
+    point(502, 36);
+    point(508, 18);
+    point(514, 24);
+    point(520, 20);
+    point(527, 32);
+    point(532, 12);
+    point(539, 46);
+    point(543, 50);
+    point(553, 156);
+    point(558, 52);
+    point(564, 102);
+    point(569, 110);
+    point(576, 99);
+    point(579, 49);
+    point(584, 60);
+    point(587, 38);
+    point(592, 97);
+    point(596, 87);
+    point(600, 30);
+    point(603, 43);
+    point(607, 68);
+    point(611, 59);
+    point(614, 12);
+    point(618, 28);
+    point(623, 79);
+    point(626, 90);
+    point(628, 42);
+    point(634, 26);
+    point(639, 57);
+    point(642, 89);
+    point(648, 32);
+    point(650, 62);
+    point(653, 22);
+    point(659, 52);
+    point(665, 30);
+    point(668, 90);
+    point(673, 113);
+    point(678, 99);
+    point(684, 78);
+    point(688, 22);
+    point(695, 57);
+    point(702, 10);
+    point(707, 38);
+    point(713, 74);
+    point(718, 94);
+    point(722, 59);
+    point(729, 27);
+    point(732, 88);
+    point(737, 42);
+    point(745, 78);
+    point(751, 56);
+    point(756, 69);
+    point(759, 20);
+    point(764, 38);
+    point(769, 83);
+    point(774, 59);
+    point(777, 19);
+    point(784, 44);
+    point(790, 64);
+    point(793, 30);
+    point(797, 18);
   }
 
 
@@ -161,7 +231,7 @@ function draw() {
   circle(120 + cloudpositionLeft, 100, 50);
   circle(100 + cloudpositionLeft, 120, 50);
   cloudpositionLeft = cloudpositionLeft - 2
-  if(sunx == -50){
+  if (sunx == -50) {
     cloudpositionLeft = 810
   }
 
@@ -172,25 +242,26 @@ function draw() {
   circle(120 + cloudpositionRight, 80, 50);
   circle(100 + cloudpositionRight, 100, 50);
   cloudpositionRight = cloudpositionRight + 1.6
-  if(sunx == -50){
+  if (sunx == -50) {
     cloudpositionRight = -350
   }
 
+
+  //van links naar rechts worden de gebouwen opgeteld geteld
   stroke('black');
   strokeWeight(1);
   fill(gebouw);
-  //van links naar rechts worden de gebouwen opgeteld geteld
   //gebouw 3
   rect(70, 150, 150, 450);
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
   rect(85, 160, 20, 10);
   rect(85, 180, 20, 10);
   rect(85, 200, 20, 10);
@@ -250,77 +321,77 @@ else if(moonx >= 200 && moonx <= 855){
   //gebouw 5
   fill(gebouw);
   rect(280, 120, 100, 480);
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
-  rect(290,130,20,10);
-  rect(290,150,20,10);
-  rect(290,170,20,10);
-  rect(290,190,20,10);
-  rect(290,210,20,10);
-  rect(290,230,20,10);
-  rect(290,250,20,10);
-  rect(290,270,20,10);
-  rect(290,290,20,10);
-  rect(290,310,20,10);
-  rect(290,330,20,10);
-  rect(290,350,20,10);
-  rect(290,370,20,10);
-  rect(290,390,20,10);
-  rect(330,130,40,10);
-  rect(330,150,40,10);
-  rect(330,170,40,10);
-  rect(330,190,40,10);
-  rect(330,210,40,10);
-  rect(330,230,40,10);
-  rect(330,250,40,10);
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
+  rect(290, 130, 20, 10);
+  rect(290, 150, 20, 10);
+  rect(290, 170, 20, 10);
+  rect(290, 190, 20, 10);
+  rect(290, 210, 20, 10);
+  rect(290, 230, 20, 10);
+  rect(290, 250, 20, 10);
+  rect(290, 270, 20, 10);
+  rect(290, 290, 20, 10);
+  rect(290, 310, 20, 10);
+  rect(290, 330, 20, 10);
+  rect(290, 350, 20, 10);
+  rect(290, 370, 20, 10);
+  rect(290, 390, 20, 10);
+  rect(330, 130, 40, 10);
+  rect(330, 150, 40, 10);
+  rect(330, 170, 40, 10);
+  rect(330, 190, 40, 10);
+  rect(330, 210, 40, 10);
+  rect(330, 230, 40, 10);
+  rect(330, 250, 40, 10);
 
 
   //gebouw 6
   fill(gebouw);
   rect(320, 260, 200, 340);
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
-  square(330,270,20);
-  square(330,300,20);
-  square(330,330,20);
-  square(330,360,20);
-  square(330,390,20);
-  circle(375,285,35);
-  circle(375,330,35);
-  circle(375,375,35);
-  circle(375,420,35);
-  circle(375,465,35);
-  circle(375,510,35);
-  circle(375,555,35);
-  circle(375,600,35);
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
+  square(330, 270, 20);
+  square(330, 300, 20);
+  square(330, 330, 20);
+  square(330, 360, 20);
+  square(330, 390, 20);
+  circle(375, 285, 35);
+  circle(375, 330, 35);
+  circle(375, 375, 35);
+  circle(375, 420, 35);
+  circle(375, 465, 35);
+  circle(375, 510, 35);
+  circle(375, 555, 35);
+  circle(375, 600, 35);
 
 
   //gebouw 4
   fill(gebouw);
   rect(200, 400, 150, 200);
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
   rect(210, 410, 80, 50);
   rect(300, 410, 40, 50);
   rect(210, 470, 110, 20);
@@ -331,15 +402,15 @@ else if(moonx >= 200 && moonx <= 855){
   //gebouw 1
   fill(gebouw);
   rect(0, 100, 50, 500);
-  if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -49 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -49 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
   rect(10, 120, 20, 10);
   rect(10, 140, 20, 10);
   rect(10, 160, 20, 10);
@@ -371,15 +442,15 @@ else if(moonx >= 200 && moonx <= 855){
 
   rect(40, 250, 100, 350);
   //new fill
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
   // fill(37, 150, 190);
   rect(60, 260, 20, 10);
   rect(60, 280, 20, 10);
@@ -415,133 +486,152 @@ else if(moonx >= 200 && moonx <= 855){
   rect(100, 540, 20, 10);
   rect(100, 560, 20, 10);
   rect(100, 580, 20, 10);
-  
-  
+
+
   //gebouw 7
   fill(gebouw);
   rect(400, 50, 150, 550);
-      if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 600){
-  fill('yellow')
-}
-else if(moonx >= 600 && moonx <= 855){
-  fill('darkblue')
-}
-//   fill(37, 150, 190);
-  rect(420,60,110,200);
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 600) {
+    fill('yellow')
+  }
+  else if (moonx >= 600 && moonx <= 855) {
+    fill('darkblue')
+  }
+  //   fill(37, 150, 190);
+  rect(420, 60, 110, 200);
   textSize(30);
   //new fill
   fill('black');
-  text('A',425,90);
-  text('A',505,250);
-  circle(435,100,10);
-  circle(431,107,10);
-  circle(439,107,10);
-  triangle(433,118,435,107,436,118);
+  text('A', 425, 90);
+  text('A', 505, 250);
+  circle(435, 100, 10);
+  circle(431, 107, 10);
+  circle(439, 107, 10);
+  triangle(433, 118, 435, 107, 436, 118);
+  circle(513, 200, 10);
+  circle(509, 207, 10);
+  circle(517, 207, 10);
+  triangle(511, 218, 513, 207, 514, 218);
+  circle(475, 125, 30);
+  circle(465, 140, 30);
+  circle(485, 140, 30);
+  triangle(461, 190, 475, 130, 489, 190);
 
-  circle(513,200,10);
-  circle(509,207,10);
-  circle(517,207,10);
-  triangle(511,218,513,207,514,218);
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 600) {
+    fill('yellow')
+  }
+  else if (moonx >= 600 && moonx <= 855) {
+    fill('darkblue')
+  }
+  rect(420, 320, 110, 200);
+  //new fill
+  fill('red');
+  text('A', 425, 350);
+  text('A', 505, 510)
+  noStroke();
+  triangle(435, 360, 435, 380, 430, 370);
+  triangle(435, 360, 435, 380, 440, 370);
 
+  triangle(515, 480, 515, 460, 510, 470);
+  triangle(515, 480, 515, 460, 520, 470);
 
-  circle(475,125,30);
-  circle(465,140,30);
-  circle(485,140,30);
-  triangle(461,190,475,130,489,190);
-
-//new fill
-// fill(37, 150, 190);
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 600){
-  fill('yellow')
-}
-else if(moonx >= 600 && moonx <= 855){
-  fill('darkblue')
-}
-rect(420,320,110,200);
-//new fill
-fill('red');
-text('A',425,350);
-text('A',505,510)
-noStroke();
-triangle(435,360,435,380,430,370);
-triangle(435,360,435,380,440,370);
-
-triangle(515,480,515,460,510,470);
-triangle(515,480,515,460,520,470);
-
-triangle(475,370,475,470,450,420);
-triangle(475,370,475,470,500,420);
-stroke(1);
+  triangle(475, 370, 475, 470, 450, 420);
+  triangle(475, 370, 475, 470, 500, 420);
+  stroke(1);
 
 
-//gebouw 9
-if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 400){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
-circle(645,180,130);
-//new fill
+  //gebouw 9
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 400) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
+  circle(645, 180, 130);
+  //new fill
   fill(gebouw);
   rect(580, 180, 130, 420);
 
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 400){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
-rect(600,180,20,500);
-rect(670,180,20,500);
-//new fill
-fill('silver');
-rect(600,179 + liftlinks,20,30)
-rect(670,230,20,30);
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 400) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
+  rect(600, 180, 20, 500);
+  rect(670, 180, 20, 500);
+  //new fill
+  fill('silver');
+  rect(600, liftlinks, 20, 30)
+  rect(670, liftrechts, 20, 30);
+
+  if (liftrechts >= 180 && liftrechts <= 650 && liftrechtstop == true) {
+    liftrechts = liftrechts + 2
+  } else {
+    liftrechts = liftrechts - 2
+  }
+  if (liftrechts == 650) {
+    liftrechtstop = false
+  }
+  if (liftrechts == 180) {
+    liftrechtstop = true
+  }
+
+  if (liftlinks >= 180 && liftlinks <= 650 && liftlinkstop == true) {
+    liftlinks = liftlinks + 2
+  } else {
+    liftlinks = liftlinks - 2
+  }
+  if (liftlinks == 650) {
+    liftlinkstop = false
+  }
+  if (liftlinks == 180) {
+    liftlinkstop = true
+  }
+  console.log(liftlinks)
 
 
-if(liftlinks >= 180 && liftlinks <= 650){
-  liftlinks = linflinks - 2
-}
-strokeWeight(2);
-line(620,120,620,180);
-line(670,120,670,180);
-line(605,130,685,130);
-line(585,160,705,160);
-stroke('blue')
-textSize(25);
-text('restaurant',590,200);
-stroke('black')
-strokeWeight(1);
+
+  strokeWeight(2);
+  line(620, 120, 620, 180);
+  line(670, 120, 670, 180);
+  line(605, 130, 685, 130);
+  line(585, 160, 705, 160);
+  stroke('blue')
+  textSize(25);
+  text('restaurant', 590, 200);
+  stroke('black')
+  strokeWeight(1);
+
 
   //gebouw 10
   fill(gebouw);
   rect(680, 500, 100, 100);
   //new fill
   //fill(37, 150, 190);
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
-square(690,510,50);
-square(690,570,50);
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
+  square(690, 510, 50);
+  square(690, 570, 50);
 
 
   //gebouw 8
@@ -550,40 +640,39 @@ square(690,570,50);
   //new fill
   noStroke();
   //fill(37, 150, 190);
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
-  triangle(510,400,550,325,590,400);
-  triangle(510,400,550,475,590,400);
-  arc(550,535,70,100,71,17);
-  arc(550,535,70,100,5,39);
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
+  triangle(510, 400, 550, 325, 590, 400);
+  triangle(510, 400, 550, 475, 590, 400);
+  arc(550, 535, 70, 100, 71, 17);
+  arc(550, 535, 70, 100, 5, 39);
 
 
   //gebouw 11
-  stroke(1); 
+  stroke(1);
   fill(gebouw);
   rect(750, 80, 55, 520);
-  //fill(37, 150, 190);
-    if(sunx >= -50 && sunx <= 849){
-fill(37, 150, 190)
-}
-else if(moonx >= -48 && moonx <= 200){
-  fill('yellow')
-}
-else if(moonx >= 200 && moonx <= 855){
-  fill('darkblue')
-}
-rect(760,90,60,200);
-rect(760,300,60,20);
-rect(760,330,60,200);
-rect(760,540,60,20);
-rect(760,570,60,50);
+  if (sunx >= -50 && sunx <= 849) {
+    fill(37, 150, 190)
+  }
+  else if (moonx >= -48 && moonx <= 200) {
+    fill('yellow')
+  }
+  else if (moonx >= 200 && moonx <= 855) {
+    fill('darkblue')
+  }
+  rect(760, 90, 60, 200);
+  rect(760, 300, 60, 20);
+  rect(760, 330, 60, 200);
+  rect(760, 540, 60, 20);
+  rect(760, 570, 60, 50);
 
 
 
@@ -621,14 +710,14 @@ rect(760,570,60,50);
   //bomen
   stroke(1);
   fill('orange');
-  circle(150,500,20);
+  circle(150, 500, 20);
   fill('brown');
-  rect(145,440,10,60);
+  rect(145, 440, 10, 60);
   fill('green');
   noStroke();
-  circle(137,440,30)
-  circle(160,440,30)
-  circle(150,420,30)
+  circle(137, 440, 30)
+  circle(160, 440, 30)
+  circle(150, 420, 30)
 
   //auto's
   //vrachtwagen
@@ -652,7 +741,7 @@ rect(760,570,60,50);
   rect(251 + truckposition, 450, 10, 20, 2)
   rect(251 + truckposition, 460, 20, 10)
   rect(230 + truckposition, 465, 22, 5)
-    if (truckposition >= 850) {
+  if (truckposition >= 850) {
     truckposition = -300
   }
   //jeep
@@ -685,14 +774,14 @@ rect(760,570,60,50);
   noStroke();
 
 
-  
-  
+
+
   //koplampen
-  if(moonx >= 0 && moonx < 850){
-  fill('yellow')
-   triangle(271 + truckposition,467,280 + truckposition,460,280 + truckposition,474)
-  triangle(101 + cabrioposition,522,111 + cabrioposition,525,111 + cabrioposition,519)
-   triangle(151 + jeepposition,487,156 + jeepposition,480,156 + jeepposition,494)
+  if (moonx >= 0 && moonx < 850) {
+    fill('yellow')
+    triangle(271 + truckposition, 467, 280 + truckposition, 460, 280 + truckposition, 474)
+    triangle(101 + cabrioposition, 522, 111 + cabrioposition, 525, 111 + cabrioposition, 519)
+    triangle(151 + jeepposition, 487, 156 + jeepposition, 480, 156 + jeepposition, 494)
   }
 
 
@@ -702,9 +791,9 @@ rect(760,570,60,50);
   noStroke();
   //1
   fill('lightblue');
-  rect(11, 509 +straatstreepy, 28, 5);
-  rect(15, 515 +straatstreepy, 20, 4);
-  rect(19, 521 +straatstreepy, 12, 2);
+  rect(11, 509 + straatstreepy, 28, 5);
+  rect(15, 515 + straatstreepy, 20, 4);
+  rect(19, 521 + straatstreepy, 12, 2);
   //2
   rect(101, 509, 28, 5);
   rect(105, 515, 20, 4);
@@ -740,7 +829,7 @@ rect(760,570,60,50);
   //new fill
   fill('white')
   //1
-  rect(10, 500 +straatstreepy, 30, 10);
+  rect(10, 500 + straatstreepy, 30, 10);
   //2
   rect(100, 500, 30, 10);
   //3
@@ -772,7 +861,7 @@ rect(760,570,60,50);
   rect(50 + cabrioposition, 515, 50, 10, 3);
   if (cabrioposition > 800) {
     cabrioposition = -50
-  } 
+  }
 
 
 
@@ -808,31 +897,31 @@ rect(760,570,60,50);
   else {
     fill("black");
   }
-  circle(licht, 515, 8);  
-  
+  circle(licht, 515, 8);
 
-  if(stoplichtstatus == 2){
-  cabrioposition = cabrioposition + 3;
-  truckposition += 1.5;
-  jeepposition += 2;
+
+  if (stoplichtstatus == 2) {
+    cabrioposition = cabrioposition + 3;
+    truckposition += 1.5;
+    jeepposition += 2;
   }
-  else if(stoplichtstatus == 1){
-   cabrioposition = cabrioposition + 6;
-   truckposition += 3;
-   jeepposition += 4
+  else if (stoplichtstatus == 1) {
+    cabrioposition = cabrioposition + 6;
+    truckposition += 3;
+    jeepposition += 4
   }
- 
+
   //bomen
   stroke(1);
   fill('orange');
-  circle(450,570,30);
+  circle(450, 570, 30);
   fill('brown');
-  rect(440,500,20,70);
+  rect(440, 500, 20, 70);
   fill('green');
   noStroke();
-  circle(435,490,40)
-  circle(465,490,40)
-  circle(450,470,40)
+  circle(435, 490, 40)
+  circle(465, 490, 40)
+  circle(450, 470, 40)
 }
 function verticalText(t, x, y) {
   push();
