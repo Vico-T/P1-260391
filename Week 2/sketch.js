@@ -13,6 +13,7 @@ let nacht = 'black'
 let gebouw = 'lightgrey'
 let licht = 710;
 let stoplichtstatus = 0;
+let liftlinks = 1
 
 function setup() {
   createCanvas(800, 600);
@@ -36,9 +37,7 @@ function draw() {
   if (sunx >= 200 && sunx <= 600) {
     background(daglicht)
 
-    // if(sunx >= cloudpositionRight && sunx <= cloudpositionRight){
-    //   background('grey')
-    // }
+
   }
   fill('yellow');
   circle(sunx, 40, 50);
@@ -54,10 +53,103 @@ function draw() {
     fill('white');
     circle(moonx, 40, 50);
     moonx += speed
-    if (moonx > 855) {
+    if (moonx > 850) {
       moonx = -50
     }
+    stroke('white')
+    strokeWeight(3)
+    point(30,30);
+    point(40,70);
+    point(10,40);
+    point(40,90);
+    point(60,110);
+    point(50,50);
+    point(100,70);
+    point(90,40);
+    point(105,60);
+    point(112,90);
+    point(130,25);
+    point(190,42);
+    point(202,34);
+    point(210,20);
+    point(225,140);
+    point(208,35);
+    point(196,43);
+    point(227,128);
+    point(210,100);
+    point(214,57);
+    point(230,111);
+    point(232,98);
+    point(236,99);
+    point(234,90);
+    point(240,62);
+    point(239,93);
+    point(245,80);
+    point(247,32);
+    point(253,52);
+    point(256,18);
+    point(259,23);
+    point(263,80);
+    point(270,56);
+    point(278,43);
+    point(285,33);
+    point(290,78);
+    point(293,29);
+    point(302,40);
+    point(310,52);
+    point(317,80);
+    point(323,32);
+    point(332,10);
+    point(334,54);
+    point(340,69);
+    point(344,47);
+    point(349,18);
+    point(354,32);
+    point(359,72);
+    point(361,112);
+    point(364,103);
+    point(367,870);
+    point(370,50);
+    point(372,69);
+    point(378,17);
+    point(384,39);
+    point(390,48);
+    point(394,70);
+    point(400,40);
+    point(402,8);
+    point(405,22);
+    point(410,37);
+    point(412,48);
+    point(420,28);
+    point(424,31);
+    point(430,40);
+    point(436,26);
+    point(440,18);
+    point(446,42);
+    point(452,36);
+    point(458,26);
+    point(460,8);
+    point(464,14);
+    point(469,28);
+    point(474,49);
+    point(480,43);
+    point(484,27);
+    point(487,16);
+    point(493,42);
+    point(502,36);
+    point(508,18);
+    point(514,24);
+    point(520,20);
+    point(527,32);
+    point(532,12);
+    point(539,46);
+    point(543,50);
+    point(553,156);
+    point(558,52);
+    point(564,102);
+    point(569,110);
   }
+
 
 
 
@@ -328,8 +420,16 @@ else if(moonx >= 200 && moonx <= 855){
   //gebouw 7
   fill(gebouw);
   rect(400, 50, 150, 550);
-  //new fill
-  fill(37, 150, 190);
+      if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 600){
+  fill('yellow')
+}
+else if(moonx >= 600 && moonx <= 855){
+  fill('darkblue')
+}
+//   fill(37, 150, 190);
   rect(420,60,110,200);
   textSize(30);
   //new fill
@@ -353,7 +453,16 @@ else if(moonx >= 200 && moonx <= 855){
   triangle(461,190,475,130,489,190);
 
 //new fill
-fill(37, 150, 190);
+// fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 600){
+  fill('yellow')
+}
+else if(moonx >= 600 && moonx <= 855){
+  fill('darkblue')
+}
 rect(420,320,110,200);
 //new fill
 fill('red');
@@ -399,8 +508,13 @@ rect(600,180,20,500);
 rect(670,180,20,500);
 //new fill
 fill('silver');
-rect(600,390,20,30);
+rect(600,179 + liftlinks,20,30)
 rect(670,230,20,30);
+
+
+if(liftlinks >= 180 && liftlinks <= 650){
+  liftlinks = linflinks - 2
+}
 strokeWeight(2);
 line(620,120,620,180);
 line(670,120,670,180);
@@ -495,12 +609,12 @@ rect(760,570,60,50);
   line(550, 105, 558, 105);
   noStroke();
   fill('grey');
-  rect(558, 62, 15, 90);
+  rect(558, 58, 18, 94);
   noFill();
   strokeWeight(0.5);
   textSize(20);
   stroke('lightgreen');
-  verticalText('p\no\nk\ne\nr\n', 560, 75);
+  verticalText('P\nO\nK\nE\nR\n', 560, 75);
   textLeading(6);
 
 
