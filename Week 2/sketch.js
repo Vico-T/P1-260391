@@ -91,7 +91,16 @@ function draw() {
   //gebouw 3
   rect(70, 150, 150, 450);
   //new fill
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
   rect(85, 160, 20, 10);
   rect(85, 180, 20, 10);
   rect(85, 200, 20, 10);
@@ -152,7 +161,16 @@ function draw() {
   fill(gebouw);
   rect(280, 120, 100, 480);
   //new fill
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
   rect(290,130,20,10);
   rect(290,150,20,10);
   rect(290,170,20,10);
@@ -180,7 +198,16 @@ function draw() {
   fill(gebouw);
   rect(320, 260, 200, 340);
   //new fill
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
   square(330,270,20);
   square(330,300,20);
   square(330,330,20);
@@ -200,7 +227,16 @@ function draw() {
   fill(gebouw);
   rect(200, 400, 150, 200);
   //new fill
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
   rect(210, 410, 80, 50);
   rect(300, 410, 40, 50);
   rect(210, 470, 110, 20);
@@ -212,7 +248,16 @@ function draw() {
   fill(gebouw);
   rect(0, 100, 50, 500);
   //new fill
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+  if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
   rect(10, 120, 20, 10);
   rect(10, 140, 20, 10);
   rect(10, 160, 20, 10);
@@ -227,6 +272,12 @@ function draw() {
   rect(10, 340, 20, 10);
   rect(10, 360, 20, 10);
   rect(10, 380, 20, 10);
+  if(moonx >= -48 && moonx <= 300){
+  fill('yellow')
+}
+ else if(moonx >= 300 && moonx <= 855){
+  fill('darkblue')
+}
   rect(10, 400, 20, 10);
   rect(10, 420, 20, 10);
   rect(10, 440, 20, 10);
@@ -351,7 +402,16 @@ circle(645,180,130);
   fill(gebouw);
   rect(580, 180, 130, 420);
   //new fill
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
 rect(600,180,20,500);
 rect(670,180,20,500);
 //new fill
@@ -373,7 +433,16 @@ strokeWeight(1);
   fill(gebouw);
   rect(680, 500, 100, 100);
   //new fill
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
 square(690,510,50);
 square(690,570,50);
 
@@ -383,7 +452,16 @@ square(690,570,50);
   rect(500, 320, 100, 280);
   //new fill
   noStroke();
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
   triangle(510,400,550,325,590,400);
   triangle(510,400,550,475,590,400);
   arc(550,535,70,100,71,17);
@@ -394,7 +472,16 @@ square(690,570,50);
   stroke(1); 
   fill(gebouw);
   rect(750, 80, 55, 520);
-  fill(37, 150, 190);
+  //fill(37, 150, 190);
+    if(sunx >= -50 && sunx <= 849){
+fill(37, 150, 190)
+}
+else if(moonx >= -48 && moonx <= 200){
+  fill('yellow')
+}
+else if(moonx >= 200 && moonx <= 855){
+  fill('darkblue')
+}
 rect(760,90,60,200);
 rect(760,300,60,20);
 rect(760,330,60,200);
