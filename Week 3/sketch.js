@@ -25,13 +25,12 @@ let winningBox = []
 
 function setup() {
   createCanvas(800, 700);
+// color picker
+  P1 = createColorPicker('#ffffff');
+  P1.position(300, 600);
+  P2 = createColorPicker('#ffffff');
+  P2.position(350, 600);
 }
-
-
-
-// function preload(){
-//   klick = loadSound("sounds/klickSound")
-// }
 
 
 
@@ -40,32 +39,27 @@ function setup() {
 
 
 function mousePressed() {
+  //zorgen dat de blokken ingedrukt kunnen worden
   if (mouseButton == LEFT) {
-    console.log("Linker Muisknop")
     let RectX = 100
     let RectY = 100
 
     if (Win == 0) {
-      console.log('rectX is ' + RectX)
       if (Box1 == 0 &&
         mouseX > RectX && mouseX < RectX + RectW &&
         mouseY > RectY && mouseY < RectY + RectH
       ) {
         Box1 = Player;
         Player++
-        console.log('blokje 1 wordt geactiveerd')
       }
 
       RectX += RectW + RectB;
-      console.log('rectX is ' + RectX + 'RectY is ' + RectY + 'RectH is ' + RectH)
-      console.log('box 2 waarde' + Box2)
       if (Box2 == 0 &&
         mouseX > RectX && mouseX < RectX + RectW &&
         mouseY > RectY && mouseY < RectY + RectH
       ) {
         Box2 = Player;
         Player++
-        console.log('blokje 2 wordt geactiveerd')
       }
 
       RectX += RectW + RectB;
@@ -140,7 +134,7 @@ function mousePressed() {
     }
   }
 
-
+// reset knop
   if (Reset == 0 &&
     mouseX > buttonX && mouseX < buttonX + buttonW &&
     mouseY > buttonY && mouseY < buttonY + buttonH) {
@@ -156,7 +150,6 @@ function mousePressed() {
 
     Win = 0
     winningBox = []
-    console.log(Reset + 'reset')
   }
 }
 
@@ -170,12 +163,20 @@ function mousePressed() {
 
 
 function draw() {
+  //color pick
+let Player1Color = P1.color();
+let Player2Color = P2.color();
+
+//background
   if (Player == 1) {
-    background('blue')
+    background(Player1Color)
   }
   if (Player == 2) {
-    background('red')
+    background(Player2Color)
   }
+
+
+  //beurt text
   textSize(30)
   fill('black');
   text('speler ' + Player + ' is aan de beurt', 190, 90);
@@ -192,9 +193,9 @@ function draw() {
   false
  }
   if (Box1 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box1 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -213,9 +214,9 @@ function draw() {
   false
  }
   if (Box2 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box2 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -228,9 +229,9 @@ function draw() {
   RectX += RectW + RectB;
   strokeWeight(5)
   if (Box3 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box3 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -245,9 +246,9 @@ function draw() {
 
   strokeWeight(5)
   if (Box4 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box4 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -260,9 +261,9 @@ function draw() {
   RectX += RectW + RectB;
   strokeWeight(5)
   if (Box5 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box5 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -275,9 +276,9 @@ function draw() {
   RectX += RectW + RectB;
   strokeWeight(5)
   if (Box6 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box6 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -292,9 +293,9 @@ function draw() {
 
   strokeWeight(5)
   if (Box7 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box7 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -307,9 +308,9 @@ function draw() {
   RectX += RectW + RectB;
   strokeWeight(5)
   if (Box8 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box8 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -322,9 +323,9 @@ function draw() {
   RectX += RectW + RectB;
   strokeWeight(5)
   if (Box9 == 1) {
-    fill("blue")
+    fill(Player1Color)
   } else if (Box9 == 2) {
-    fill("red");
+    fill(Player2Color);
   } else {
     fill(57, 40, 85);
   }
@@ -553,7 +554,7 @@ function draw() {
 
 
 
-  // //hover 
+  //hover 
   if (Win == 0 && 
     Box1 == false || Box2 == false) {
     if (mouseX > RectX && mouseX < RectX + RectW &&
