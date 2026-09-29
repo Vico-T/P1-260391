@@ -30,8 +30,8 @@ function draw() {
   }
 
   //opdract 2
-  for(let i = 0; i <= 5; i--){
-    fill(opdracht2[])
-    square(10, 40,45)
-  }
+  // for(let i = 0; i <= 5; i--){
+  //   fill(opdracht2[2])
+  //   square(10, 40,45)
+  // }
 }
