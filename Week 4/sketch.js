@@ -137,7 +137,7 @@ function keyPressed() {
     groteCircle = groteCircleSaved.slice();
     groteVierkant = groteVierkantSaved.slice();
     groteRect = groteRectSaved.slice();
-    hoogteRect = hoogteRectSaved();
+    hoogteRect = hoogteRectSaved.slice();
     groteEllipse = groteEllipseSaved.slice();
     hoogteEllipse = hoogteEllipseSaved.Saved();
   }
