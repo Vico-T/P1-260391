@@ -2,41 +2,55 @@
 //circle
 let posXCircle = []
 let posYCircle = []
+let posXCircleSaved = []
+let posYCircleSaved = []
 //vierkant
 let posXVierkant = []
 let posYVierkant = []
+let posXVierkantSaved = []
+let posYVierkantSaved = []
 //rect
 let posXRect = []
 let posYRect = []
+let posXRectSaved = []
+let posYRectSaved = []
 //ellipse
 let posXEllipse = []
 let posYEllipse = []
+let posXEllipseSaved = []
+let posYEllipseSaved = []
 
 
 //grote van het object
 //circle
 let groteCircle = []
+let groteCircleSaved = []
 let circleMin = 10
 let circleMax = 100
 //vierkant
 let groteVierkant = []
+let groteVierkantSaved = []
 let vierkantMin = 10
 let vierkantMax = 100
 //rect
 let groteRect = []
+let groteRectSaved = []
 let hoogteRect = []
+let hoogteRectSaved = []
 let rectGroteMin = 10
 let rectGroteMax = 100
 let rectHoogteMin = 20
 let rectHoogteMax = 200
 //ellipse
 let groteEllipse = []
+let groteEllipseSaved = []
 let hoogteEllipse = []
+let hoogteEllipseSaved = []
 let ellipseGroteMin = 10
 let ellipseGroteMax = 100
 let ellipseHoogteMin = 20
 let ellipseHoogteMax = 200
-//boost en vermindering
+//groter en kleiner
 let groteBoost = []
 let groteMin = []
 let groteBoostMin = 1
@@ -51,25 +65,21 @@ let speedXCircle = []
 let speedYCircle = []
 let speedCircleMin = -8
 let speedCircleMax = 8
-
 //vierkant
 let speedXVierkant = []
 let speedYVierkant = []
 let speedVierkantMin = -8
 let speedVierkantMax = 8
-
 //rect
 let speedXRect = []
 let speedYRect = []
 let speedRectMin = -8
 let speedRectMax = 8
-
 //ellipse
 let speedXEllipse = []
 let speedYEllipse = []
 let speedEllipseMin = -8
 let speedEllipseMax = 8
-
 
 
 //kleuren
@@ -82,95 +92,129 @@ let transparant = []
 //geluid
 let mySound;
 
+
 //pauze
 let spatie = false
+
 
 
 async function setup() {
   createCanvas(800, 600);
   mySound = await loadSound('bubbles.mp3')
   regenerate();
+
 }
 
 
 function keyPressed() {
+  //saved
+  if (key === 's') {
+    posXCircleSaved = posXCircle.slice();
+    posYCircleSaved = posYCircle.slice();
+    posXVierkantSaved = posXVierkant.slice();
+    posYVierkantSaved = posYVierkant.slice();
+    posXRectSaved = posXRect.slice();
+    posYRectSaved = posYRect.slice();
+    posXEllipseSaved = posXEllipse.slice();
+    posYEllipseSaved = posYEllipse.slice();
+    groteCircleSaved = groteCircle.slice();
+    groteVierkantSaved = groteVierkant.slice();
+    groteRectSaved = groteRect.slice();
+    hoogteRectSaved = hoogteRect.slice();
+    groteEllipseSaved = groteEllipse.slice();
+    hoogteEllipseSaved = hoogteEllipse.slice();
+  }
+  //load
+  if (key === 'l') {
+    posXCircle = posXCircleSaved.slice();
+    posYCircle = posYCircleSaved.slice();
+    posXVierkant = posXVierkantSaved.slice();
+    posYVierkant = posYVierkantSaved.slice();
+    posXRect = posXRectSaved.slice();
+    posYRect = posYRectSaved.slice();
+    posXEllipse = posXEllipseSaved.slice();
+    posYEllipse = posYEllipseSaved.slice();
+    groteCircle = groteCircleSaved.slice();
+    groteVierkant = groteVierkantSaved.slice();
+    groteRect = groteRectSaved.slice();
+    hoogteRect = hoogteRectSaved();
+    groteEllipse = groteEllipseSaved.slice();
+    hoogteEllipse = hoogteEllipseSaved.Saved();
+  }
+
+
   //geluid
   if (keyCode == 13) {
     mySound.play();
   }
 
   //pauze
-  if(keyCode == 32){
+  if (keyCode == 32) {
     spatie = !spatie
-    console.log("spatie waarde "+ spatie)
   }
 
-// generator knop
+  // generator knop
   if (keyCode == 8) {
-    console.log("backspace")
     regenerate();
   }
 
   //object grote aanpassen
   //circle en rect groter
-  if (keyCode == 38) {
-    console.log("pijltje omhoog ")
+  if (keyCode === 38) {
     for (i = 0; i < groteCircle.length; i++) {
-      for(j = 0; j < groteBoost.length; j++){
-      groteCircle[i] = groteCircle[i] + groteBoost[j]
+      for (j = 0; j < groteBoost.length; j++) {
+        groteCircle[i] = groteCircle[i] + groteBoost[j]
+      }
     }
-  }
-         for (i = 0; i < groteRect.length; i++) {
-          for(j = 0; j < groteBoost.length; j++){
-      groteRect[i] = groteRect[i] + groteBoost[j]
-    }
-  }
-  }
-
-  //circle en rect kleiner
-   if (keyCode == 40) {
-    console.log("pijltje laag ")
-    for (i = 0; i < groteCircle.length; i++) {
-      for(j = 0; j < groteBoost.length; j++){
-      groteCircle[i] = groteCircle[i] - groteBoost[j]
-    }
-  }
-     for (i = 0; i < groteRect.length; i++) {
-      for(j = 0; j < groteBoost.length; j++){
-      groteRect[i] = groteRect[i] - groteBoost[j]
+    for (i = 0; i < groteRect.length; i++) {
+      for (j = 0; j < groteBoost.length; j++) {
+        groteRect[i] = groteRect[i] + groteBoost[j]
       }
     }
   }
 
-//vierkant en ellipse groter
-  if (keyCode == 39) {
-    console.log("pijltje rechts ")
-    for (i = 0; i < groteVierkant.length; i++) {
-      for(j = 0; j < groteBoost.length; j++){
-      groteVierkant[i] = groteVierkant[i] + groteBoost[j]
+  // circle en rect kleine 
+  if (keyCode === 40) {
+    for (i = 0; i < groteCircle.length; i++) {
+      for (j = 0; j < groteBoost.length; j++) {
+        groteCircle[i] = groteCircle[i] - groteBoost[j]
+      }
+    }
+    for (i = 0; i < groteRect.length; i++) {
+      for (j = 0; j < groteBoost.length; j++) {
+        groteRect[i] = groteRect[i] - groteBoost[j]
+      }
     }
   }
-     for (i = 0; i < groteEllipse.length; i++) {
-      for(j = 0; j < groteBoost.length; j++){
-      groteEllipse[i] = groteEllipse[i] + groteBoost[j]
+
+  //vierkant en ellipse groter
+  if (keyCode == 39) {
+    for (i = 0; i < groteVierkant.length; i++) {
+      for (j = 0; j < groteBoost.length; j++) {
+        groteVierkant[i] = groteVierkant[i] + groteBoost[j]
+      }
+    }
+    for (i = 0; i < groteEllipse.length; i++) {
+      for (j = 0; j < groteBoost.length; j++) {
+        groteEllipse[i] = groteEllipse[i] + groteBoost[j]
       }
     }
   }
   //vierkant en ellipse kleiner
   if (keyCode == 37) {
-    console.log("pijltje links ")
     for (i = 0; i < groteVierkant.length; i++) {
-      for(j = 0; j < groteBoost.length; j++){
-      groteVierkant[i] = groteVierkant[i] - groteBoost[j]
+      for (j = 0; j < groteBoost.length; j++) {
+        groteVierkant[i] = groteVierkant[i] - groteBoost[j]
+      }
     }
-  }
-     for (i = 0; i < groteEllipse.length; i++) {
-      for(j = 0; j < groteBoost.length; j++){
-      groteEllipse[i] = groteEllipse[i] - groteBoost[j]
+    for (i = 0; i < groteEllipse.length; i++) {
+      for (j = 0; j < groteBoost.length; j++) {
+        groteEllipse[i] = groteEllipse[i] - groteBoost[j]
+      }
     }
-  }
   }
 }
+
 
 function regenerate() {
   //circle
@@ -202,10 +246,8 @@ function regenerate() {
 
 
   //code om de waardes te randomizen
+  //positie van het object
   for (let i = 0; i <= random(50, 300); i++) {
-    console.log("text" + i)
-
-    //positie van het object
     //circle
     posXCircle.push(int(random(0, 1000)));
     posYCircle.push(int(random(0, 800)));
@@ -219,6 +261,8 @@ function regenerate() {
     posXEllipse.push(int(random(0, 1000)));
     posYEllipse.push(int(random(0, 800)));
 
+
+
     //grote van het object
     //circle
     groteCircle.push(int(random(circleMin, circleMax)));
@@ -231,6 +275,7 @@ function regenerate() {
     groteEllipse.push(int(random(ellipseGroteMin, ellipseGroteMax)));
     hoogteEllipse.push(int(random(ellipseHoogteMin, ellipseHoogteMax)));
 
+
     //boost en vermindering
     groteBoost.push(int(random(groteBoostMin, groteBoostMax)));
     groteMin.push(int(random(groteMinMin, groteMinMax)));
@@ -239,40 +284,40 @@ function regenerate() {
     //snelheid van het object
     //circle
     speedXCircle.push(int(random(speedCircleMin, speedCircleMax)));
-    if(speedXCircle[i] == 0){
-      speedXCircle[i] = speedXCircle[i] + random(2,8)
+    if (speedXCircle[i] == 0) {
+      speedXCircle[i] = speedXCircle[i] + random(2, 8)
     }
-     speedYCircle.push(int(random(speedCircleMin, speedCircleMax)));
-    if(speedYCircle[i] == 0){
-      speedYCircle[i] = speedYCircle[i] + random(2,8)
-    }    
+    speedYCircle.push(int(random(speedCircleMin, speedCircleMax)));
+    if (speedYCircle[i] == 0) {
+      speedYCircle[i] = speedYCircle[i] + random(2, 8)
+    }
     //vierkant
     speedXVierkant.push(int(random(speedVierkantMin, speedVierkantMax)));
-    if(speedXVierkant[i] == 0){
-      speedXVierkant[i] = speedXVierkant[i] + random(2,8)
-    }  
-      speedYVierkant.push(int(random(speedVierkantMin, speedVierkantMax)));
-    if(speedYVierkant[i] == 0){
-      speedYVierkant[i] = speedYVierkant[i] + random(2,8)
-    }  
+    if (speedXVierkant[i] == 0) {
+      speedXVierkant[i] = speedXVierkant[i] + random(2, 8)
+    }
+    speedYVierkant.push(int(random(speedVierkantMin, speedVierkantMax)));
+    if (speedYVierkant[i] == 0) {
+      speedYVierkant[i] = speedYVierkant[i] + random(2, 8)
+    }
     //rect
     speedXRect.push(int(random(speedRectMin, speedRectMax)));
-    if(speedXRect[i] == 0){
-      speedXRect[i] = speedXRect[i] + random(2,8)
-    }  
-     speedYRect.push(int(random(speedRectMin, speedRectMax)));
-    if(speedYRect[i] == 0){
-      speedYRect[i] = speedYRect[i] + random(2,8)
-    }  
+    if (speedXRect[i] == 0) {
+      speedXRect[i] = speedXRect[i] + random(2, 8)
+    }
+    speedYRect.push(int(random(speedRectMin, speedRectMax)));
+    if (speedYRect[i] == 0) {
+      speedYRect[i] = speedYRect[i] + random(2, 8)
+    }
     //ellipse
     speedXEllipse.push(int(random(speedEllipseMin, speedEllipseMax)));
-    if(speedXEllipse[i] == 0){
-      speedXEllipse[i] = speedXEllipse[i] + random(2,8)
-    }  
+    if (speedXEllipse[i] == 0) {
+      speedXEllipse[i] = speedXEllipse[i] + random(2, 8)
+    }
     speedYEllipse.push(int(random(speedEllipseMin, speedEllipseMax)));
-    if(speedYEllipse[i] == 0){
-      speedYEllipse[i] = speedYEllipse[i] + random(2,8)
-    } 
+    if (speedYEllipse[i] == 0) {
+      speedYEllipse[i] = speedYEllipse[i] + random(2, 8)
+    }
 
 
     //kleuren
@@ -282,52 +327,46 @@ function regenerate() {
     transparant.push(int(random(20, 300)));
 
 
-    // voor als ik de objecten alle kanten op heb weten te krijgen voor het trailen effect 
-    // de backround onder draw moet uit
-    background(red[i],green[i],blue[i]);
+    //background
+    background(red[i], green[i], blue[i]);
   }
 }
-
 
 
 
 function draw() {
-  // background("blue");
-  
-  if(spatie == false){
-  //snelheid
-  //circle 
+  if (spatie == false) {
+    //snelheid
+    //circle 
     for (let i = 0; i < speedXCircle.length; i++) {
-    posXCircle[i] = posXCircle[i] + speedXCircle[i]
+      posXCircle[i] = posXCircle[i] + speedXCircle[i]
     }
-    for(let i = 0; i < speedYCircle.length; i++){
-    posYCircle[i] = posYCircle[i] + speedYCircle[i]
+    for (let i = 0; i < speedYCircle.length; i++) {
+      posYCircle[i] = posYCircle[i] + speedYCircle[i]
     }
     //vierkant
-      for (let i = 0; i < speedXVierkant.length; i++) {
-    posXVierkant[i] = posXVierkant[i] + speedXVierkant[i]
-      }
-      for(let i = 0; i < speedYVierkant.length; i++){
-    posYVierkant[i] = posYVierkant[i] + speedYVierkant[i]
-      }
+    for (let i = 0; i < speedXVierkant.length; i++) {
+      posXVierkant[i] = posXVierkant[i] + speedXVierkant[i]
+    }
+    for (let i = 0; i < speedYVierkant.length; i++) {
+      posYVierkant[i] = posYVierkant[i] + speedYVierkant[i]
+    }
     //rect
-      for (let i = 0; i < speedXRect.length; i++) {
-    posXRect[i] = posXRect[i] + speedXRect[i]
-      }
-    for(let i = 0; i < speedYRect.length; i++){
-    posYRect[i] = posYRect[i] + speedYRect[i]
-      }
+    for (let i = 0; i < speedXRect.length; i++) {
+      posXRect[i] = posXRect[i] + speedXRect[i]
+    }
+    for (let i = 0; i < speedYRect.length; i++) {
+      posYRect[i] = posYRect[i] + speedYRect[i]
+    }
     //ellipse
-      for (let i = 0; i < speedXEllipse.length; i++) {
-    posXEllipse[i] = posXEllipse[i] + speedXEllipse[i]
-      }
-      for(let i = 0; i < speedYEllipse.length; i++){
-    posYEllipse[i] = posYEllipse[i] + speedYEllipse[i]
+    for (let i = 0; i < speedXEllipse.length; i++) {
+      posXEllipse[i] = posXEllipse[i] + speedXEllipse[i]
+    }
+    for (let i = 0; i < speedYEllipse.length; i++) {
+      posYEllipse[i] = posYEllipse[i] + speedYEllipse[i]
+    }
+
   }
-}
-  
-
-
 
   //objecten
   //circle
@@ -349,6 +388,7 @@ function draw() {
   for (let i = 0; i <= 30; i++) {
     fill(red[i], green[i], blue[i], transparant[i])
     ellipse(posXEllipse[i], posYEllipse[i], groteEllipse[i], hoogteEllipse[i])
+
 
     //loopfunctie
     //circle
@@ -400,4 +440,17 @@ function draw() {
       posYEllipse[i] = 650
     }
   }
+
+  fill("yellow")
+  rect(10, 10, 60, 20);
+  rect(10, 40, 60, 20);
+  rect(10, 70, 95, 20);
+  rect(10, 100, 175, 20);
+
+  fill("black");
+  textSize(15);
+  text("save: S", 13, 25);
+  text("load: L", 13, 55);
+  text("pauze: spatie", 13, 85);
+  text("niewe formen: backspace", 13, 115);
 }
