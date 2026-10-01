@@ -1,92 +1,92 @@
 //positie van het object
 //circle
-let posXCircle = []
-let posYCircle = []
-let posXCircleSaved = []
-let posYCircleSaved = []
+let posXCircle = [];
+let posYCircle = [];
+let posXCircleSaved = [];
+let posYCircleSaved = [];
 //vierkant
-let posXVierkant = []
-let posYVierkant = []
-let posXVierkantSaved = []
-let posYVierkantSaved = []
+let posXVierkant = [];
+let posYVierkant = [];
+let posXVierkantSaved = [];
+let posYVierkantSaved = [];
 //rect
-let posXRect = []
-let posYRect = []
-let posXRectSaved = []
-let posYRectSaved = []
+let posXRect = [];
+let posYRect = [];
+let posXRectSaved = [];
+let posYRectSaved = [];
 //ellipse
-let posXEllipse = []
-let posYEllipse = []
-let posXEllipseSaved = []
-let posYEllipseSaved = []
+let posXEllipse = [];
+let posYEllipse = [];
+let posXEllipseSaved = [];
+let posYEllipseSaved = [];
 
 
 //grote van het object
 //circle
-let groteCircle = []
-let groteCircleSaved = []
-let circleMin = 10
-let circleMax = 100
+let groteCircle = [];
+let groteCircleSaved = [];
+let circleMin = 10;
+let circleMax = 100;
 //vierkant
-let groteVierkant = []
-let groteVierkantSaved = []
-let vierkantMin = 10
-let vierkantMax = 100
+let groteVierkant = [];
+let groteVierkantSaved = [];
+let vierkantMin = 10;
+let vierkantMax = 100;
 //rect
-let groteRect = []
-let groteRectSaved = []
-let hoogteRect = []
-let hoogteRectSaved = []
-let rectGroteMin = 10
-let rectGroteMax = 100
-let rectHoogteMin = 20
-let rectHoogteMax = 200
+let groteRect = [];
+let groteRectSaved = [];
+let hoogteRect = [];
+let hoogteRectSaved = [];
+let rectGroteMin = 10;
+let rectGroteMax = 100;
+let rectHoogteMin = 20;
+let rectHoogteMax = 200;
 //ellipse
-let groteEllipse = []
-let groteEllipseSaved = []
-let hoogteEllipse = []
-let hoogteEllipseSaved = []
-let ellipseGroteMin = 10
-let ellipseGroteMax = 100
-let ellipseHoogteMin = 20
-let ellipseHoogteMax = 200
+let groteEllipse = [];
+let groteEllipseSaved = [];
+let hoogteEllipse = [];
+let hoogteEllipseSaved = [];
+let ellipseGroteMin = 10;
+let ellipseGroteMax = 100;
+let ellipseHoogteMin = 20;
+let ellipseHoogteMax = 200;
 //groter en kleiner
-let groteBoost = []
-let groteMin = []
-let groteBoostMin = 1
-let groteBoostMax = 3
-let groteMinMin = -1
-let groteMinMax = -3
+let groteBoost = [];
+let groteMin = [];
+let groteBoostMin = 1;
+let groteBoostMax = 3;
+let groteMinMin = -1;
+let groteMinMax = -3;
 
 
 //snelheid
 //circle
-let speedXCircle = []
-let speedYCircle = []
-let speedCircleMin = -8
-let speedCircleMax = 8
+let speedXCircle = [];
+let speedYCircle = [];
+let speedCircleMin = -8;
+let speedCircleMax = 8;
 //vierkant
-let speedXVierkant = []
-let speedYVierkant = []
-let speedVierkantMin = -8
-let speedVierkantMax = 8
+let speedXVierkant = [];
+let speedYVierkant = [];
+let speedVierkantMin = -8;
+let speedVierkantMax = 8;
 //rect
-let speedXRect = []
-let speedYRect = []
-let speedRectMin = -8
-let speedRectMax = 8
+let speedXRect = [];
+let speedYRect = [];
+let speedRectMin = -8;
+let speedRectMax = 8;
 //ellipse
-let speedXEllipse = []
-let speedYEllipse = []
-let speedEllipseMin = -8
-let speedEllipseMax = 8
+let speedXEllipse = [];
+let speedYEllipse = [];
+let speedEllipseMin = -8;
+let speedEllipseMax = 8;
 
 
 //kleuren
-let red = []
-let green = []
-let blue = []
-let transparant = []
+let red = [];
+let green = [];
+let blue = [];
+let transparant = [];
 
 
 //geluid
@@ -94,13 +94,13 @@ let mySound;
 
 
 //pauze
-let spatie = false
+let spatie = false;
 
 
 
 async function setup() {
   createCanvas(800, 600);
-  mySound = await loadSound('bubbles.mp3')
+  mySound = await loadSound('bubbles.mp3');
   regenerate();
 
 }
@@ -218,30 +218,30 @@ function keyPressed() {
 
 function regenerate() {
   //circle
-  posXCircle = []
-  posYCircle = []
-  groteCircle = []
-  speedCircle = []
+  posXCircle = [];
+  posYCircle = [];
+  groteCircle = [];
+  speedCircle = [];
   //vierkant
-  posXVierkant = []
-  posYVierkant = []
-  groteVierkant = []
-  speedVierkant = []
+  posXVierkant = [];
+  posYVierkant = [];
+  groteVierkant = [];
+  speedVierkant = [];
   //rect
-  posXRect = []
-  posYRect = []
-  groteRect = []
-  hoogteRect = []
-  speedRect = []
+  posXRect = [];
+  posYRect = [];
+  groteRect = [];
+  hoogteRect = [];
+  speedRect = [];
   //ellipse
-  posXEllipse = []
-  posYEllipse = []
-  groteEllipse = []
-  hoogteEllipse = []
-  speedEllipse = []
+  posXEllipse = [];
+  posYEllipse = [];
+  groteEllipse = [];
+  hoogteEllipse = [];
+  speedEllipse = [];
   //boost en vermindering
-  groteBoost = []
-  groteMin = []
+  groteBoost = [];
+  groteMin = [];
 
 
 
@@ -446,6 +446,7 @@ function draw() {
   rect(10, 40, 60, 20);
   rect(10, 70, 95, 20);
   rect(10, 100, 175, 20);
+  rect(10,130,90,20)
 
   fill("black");
   textSize(15);
@@ -453,4 +454,5 @@ function draw() {
   text("load: L", 13, 55);
   text("pauze: spatie", 13, 85);
   text("niewe formen: backspace", 13, 115);
+  text("geluid: enter",13,145);
 }
