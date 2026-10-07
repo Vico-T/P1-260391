@@ -1,49 +1,55 @@
+let buttons = []
 let blokken = [];
-let aantalBlokken = 4;
+let achtergrond = [];
+let afbeeldingen = [];
+let huidigeVraag = 0;
 let vragenKleinSchip = [
-{
+  {
+    vraag1: "welke koers overstag?",
+    1: "Aan de wind",
+    2: "Voor de wind",
+    3: "Halve wind",
+    4: "In de wind",
+    goedAntwoord: 1
+  },
+  {
+    vraag2: "aan welk onderdeel van de boot zit het zeil vast?",
+    1: "stag",
+    2: "grootschoot",
+    3: "mast",
+    4: "piekenval",
+    goedAntwoord: 3
+  }
+];
 
+function preload(){
+achtergrond.push(loadImage('kleinzeilboot/achtergrond.jpeg'));
+afbeeldingen.push(loadImage('kleinzeilboot/windroos.jpeg'));
 }
-]
+
 
 function setup() {
   createCanvas(800, 600);
 
-  for(let i = 0; i < aantalBlokken; i++){
-  blokken.push(
-  {
-  posX: [80,320,
-         80,320],
-  posY: [300,300,
-         420,420],
-  lengte: 300,
-  hoogte: 100,
+  for(let j = 0; j < vragenKleinSchip.length; j++){
+  for (let i = 1; i <= 4; i++) {
+    button = createButton(vragenKleinSchip[j][i])
+    button[0][1].positioin(100,400);
+    buttons.push(button)
   }
-  )
 }
 }
 
 function draw() {
-  background("pink");
-  for(let i = 0; i < blokken.length; i++){
-  drawBlokken( blokken[i] );
-  // updateBlokken( blokken[i] );
-  }
+  background(achtergrond[0]);
+if(huidigeVraag == 0){
+ buttons[0].show(vragenKleinSchip[0]);
+ buttons[1].hide(vragenKleinSchip[1]);
+}
+if(huidigeVraag == 1){
+  buttons[0].hide(vragenKleinSchip[0]);
+  buttons[1].show(vragenKleinSchip[1]);
+}
 }
 
-function drawBlokken(blok){
-  rect(blok.posX[0][0], blok.posY[0][0], blok.lengte, blok.hoogte);
-  rect(blok.posX[0][1], blok.posY[0][1], blok.lengte, blok.hoogte);
-  rect(blok.posX[1][0], blok.posY[1][0], blok.lengte, blok.hoogte);
-  rect(blok.posX[1][1], blok.posY[1][1], blok.lengte, blok.hoogte);
-}
-
-// function updateBlokken(blok){
-// if( blok.posX, blok.posY, mouseX, mouseY > blok.lengte && blok.hoogte){
-// strokeWeight(3);
-// }
-// else{
-//   strokeWeight(1);
-// }
-// }
 
