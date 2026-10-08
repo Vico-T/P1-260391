@@ -6,16 +6,21 @@ let buttonsPlace = {
   breed: [300, 300, 300, 300, 300, 300],
   hoog: [100, 80, 80, 80, 80, 100]
 }
-let score = 0;
-
 let functie = [start, buttonA, buttonB, buttonC, buttonD, buttonR];
 let names = ["START", "A", "B", "C", "D", "RESTART"]
+let answerButtonA
+let answerButtonB
+let answerButtonC
+let answerButtonD
 
+//score
+let score = 0;
 
-
+//afbeeldingen
 let achtergrond = [];
 let afbeeldingen = [];
 
+//vragen
 let huidigeVraag = -1;
 
 let vragen = [{
@@ -70,10 +75,8 @@ let vragen = [{
 }
 ]
 
-let answerButtonA
-let answerButtonB
-let answerButtonC
-let answerButtonD
+
+
 function preload() {
   //achtergrond
   achtergrond.push(loadImage('kleinzeilboot/achtergrond.jpeg'));
@@ -209,12 +212,12 @@ function buttonR() {
 }
 
 
-
-
-
 function draw() {
+  //achtergrond
   achtergrond[1].resize(10000, 0);
   background(achtergrond[1]);
+  
+  //score
   if (huidigeVraag >= 0 && huidigeVraag < 10) {
     textSize(40);
     text("SCORE: "+ score, 10, 40);
@@ -229,8 +232,6 @@ function draw() {
   afbeeldingen[5].resize(200, 0);
   afbeeldingen[6].resize(400, 0);
   afbeeldingen[7].resize(180, 0);
-
-
 
 
   textSize(30)
@@ -295,6 +296,7 @@ function draw() {
     image(afbeeldingen[5], 270, 150);
   }
 
+  //restart
   if (huidigeVraag === 10) {
   buttons[0].hide();
   answerButtonA.hide();
