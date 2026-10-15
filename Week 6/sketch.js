@@ -1,4 +1,5 @@
-let  wellBeing = [];
+let wellBeing = [];
+let wellBeingImage = 100
 let health = 100;
 let raccoon = [];
 let raccoonImage = 1;
@@ -18,7 +19,13 @@ let item = 0;
 
 function preload() {
   wellBeing.push(loadImage('heart/heartFull.png'));
-   wellBeing.push(loadImage('heart/heart-1.png'));
+  wellBeing.push(loadImage('heart/heart-1.png'));
+  wellBeing.push(loadImage('heart/heart-2.png'));
+  wellBeing.push(loadImage('heart/heart-3.png'));
+  wellBeing.push(loadImage('heart/heart-5.png'));
+  wellBeing.push(loadImage('heart/heart-6.png'));
+  wellBeing.push(loadImage('heart/heart-7.png'));
+  wellBeing.push(loadImage('heart/heartEmpty.png'));
   bGround.push(loadImage('background/livingRoom.png'));
   bGround.push(loadImage('background/keuken.png'));
   shopper.push(loadImage('shop/berry.png'));
@@ -73,8 +80,8 @@ function setup() {
 
   //bowlen
   bowlButton = createButton("bowlen");
-  bowlButton.position(700,105);
-  bowlButton.size(100,30);
+  bowlButton.position(700, 105);
+  bowlButton.size(100, 30);
   bowlButton.mousePressed(bowlPressed);
   buttons.push(bowlButton);
 }
@@ -83,13 +90,12 @@ function setup() {
 function draw() {
   background(bGround[0]);
   //resize
-  wellBeing[0].resize(60, 0);
   shopper[0].resize(30, 0);
   shopper[1].resize(30, 0);
   shopper[2].resize(40, 0);
   raccoon[0].resize(150, 0);
   raccoon[1].resize(150, 0);
-  raccoon[2].resize(150,0);
+  raccoon[2].resize(150, 0);
 
   //bars
   heart();
@@ -114,7 +120,7 @@ function draw() {
     inventory();
     shopButton.hide();
     bowlButton.hide();
-  }else if (press == 3){
+  } else if (press == 3) {
     bowl();
     shopButton.hide();
     invButton.hide();
@@ -125,19 +131,19 @@ function draw() {
   racImage();
 }
 
-function speed(){
-  if(raccoonWalkX >= 640 || raccoonWalkX <= 40){
+function speed() {
+  if (raccoonWalkX >= 640 || raccoonWalkX <= 40) {
     raccoonSpeed = raccoonSpeed * -1
   }
   raccoonWalkX = raccoonWalkX + raccoonSpeed
 }
 
 
-function racImage(){
-  if(raccoonWalkX >= 640){
+function racImage() {
+  if (raccoonWalkX >= 640) {
     raccoonImage = 1
   }
-  if(raccoonWalkX <= 40){
+  if (raccoonWalkX <= 40) {
     raccoonImage = 2
   }
   image(raccoon[raccoonImage], raccoonWalkX, 550);
@@ -195,27 +201,58 @@ function inventory() {
   text("0", 760, 200);
 }
 
-function bowlPressed(){
+function bowlPressed() {
   press += 3
-  if(press >= 6){
+  if (press >= 6) {
     press = 0
   }
 }
 
-function bowl(){
+function bowl() {
   fill("black");
-  square(100,100,600);
+  square(100, 100, 600);
 }
 
-function heart(){
-  //console.log(health)
-if (health <= 100 && health >= 87.5){
-  image(wellBeing[0],1,1);
-console.log("healt half")
+function heart() {
+  //resize
+  wellBeing[0].resize(60, 0);
+  wellBeing[1].resize(60, 0);
+  wellBeing[2].resize(60, 0);
+  wellBeing[3].resize(60, 0);
+  wellBeing[4].resize(60, 0);
+  wellBeing[5].resize(60, 0);
+  wellBeing[6].resize(60, 0);
+  wellBeing[7].resize(60, 0);
+  // wellBeing[8].resize(60, 0);
+
+  if (health <= 100 && health >= 87.5) {
+    image(wellBeing[0], 1, 1);
+  } 
+  else if (health <= 87.5 && health >= 75) {
+    image(wellBeing[1], 1, 1);
+  } else if (health <= 75 && health >= 62.5) {
+    image(wellBeing[2], 1, 1);
+  } else if (health <= 62.5 && health >= 50) {
+    image(wellBeing[3], 1, 1);
+  } else if (health <= 50 && health >= 37.5) {
+    image(wellBeing[4], 1, 1);
+  } else if (health <= 37.5 && health >= 25) {
+    image(wellBeing[5], 1, 1);
+  } else if (health <= 25 && health >= 12.5) {
+    image(wellBeing[6], 1, 1);
+  } else if (health <= 12.5 && health >= -1) {
+    image(wellBeing[7], 1, 1);
+  } else if (health = 0) {
+    image(wellBeing[8], 1, 1);
+  }
+  if(health >= 0){
+  health = health - 0.0001
+  }else if(health = 0){
+    health = 0
+  }
 }
-else if(health <= 87.5 && health >= 75){
-image(wellBeing[1],1,1);
-console.log("healt half")
-}
-health = health - 10
+
+
+function energy(){
+  
 }
