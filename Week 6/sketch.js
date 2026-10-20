@@ -1,6 +1,7 @@
 let wellBeing = [];
-let wellBeingImage = 100
 let health = 100;
+let energyImage = [];
+let energy = 100;
 let raccoon = [];
 let raccoonImage = 1;
 let raccoonWalkX = 640;
@@ -18,6 +19,7 @@ let press = 0;
 let item = 0;
 
 function preload() {
+  //heart
   wellBeing.push(loadImage('heart/heartFull.png'));
   wellBeing.push(loadImage('heart/heart-1.png'));
   wellBeing.push(loadImage('heart/heart-2.png'));
@@ -26,6 +28,28 @@ function preload() {
   wellBeing.push(loadImage('heart/heart-6.png'));
   wellBeing.push(loadImage('heart/heart-7.png'));
   wellBeing.push(loadImage('heart/heartEmpty.png'));
+  //bliksem
+  energyImage.push(loadImage('energy/bliksemFull.png'));
+  energyImage.push(loadImage('energy/bliksem-1.png'));
+  // energyImage.push(loadImage('energy/bliksem-2.png'));
+  energyImage.push(loadImage('energy/bliksem-3.png'));
+  // energyImage.push(loadImage('energy/bliksem-4.png'));
+  energyImage.push(loadImage('energy/bliksem-5.png'));
+  // energyImage.push(loadImage('energy/bliksem-6.png'));
+  energyImage.push(loadImage('energy/bliksem-7.png'));
+  // energyImage.push(loadImage('energy/bliksem-8.png'));
+  energyImage.push(loadImage('energy/bliksem-9.png'));
+  // energyImage.push(loadImage('energy/bliksem-10.png'));
+  energyImage.push(loadImage('energy/bliksem-11.png'));
+  // energyImage.push(loadImage('energy/bliksem-12.png'));
+  energyImage.push(loadImage('energy/bliksem-13.png'));
+  // energyImage.push(loadImage('energy/bliksem-14.png'));
+  energyImage.push(loadImage('energy/bliksem-15.png'));
+  // energyImage.push(loadImage('energy/bliksem-16.png'));
+  energyImage.push(loadImage('energy/bliksem-17.png'));
+  // energyImage.push(loadImage('energy/bliksem-18.png'));
+  energyImage.push(loadImage('energy/bliksemEmpty.png'));
+  
   bGround.push(loadImage('background/livingRoom.png'));
   bGround.push(loadImage('background/keuken.png'));
   shopper.push(loadImage('shop/berry.png'));
@@ -99,6 +123,7 @@ function draw() {
 
   //bars
   heart();
+  bliksem();
 
 
 
@@ -246,13 +271,72 @@ function heart() {
     image(wellBeing[8], 1, 1);
   }
   if(health >= 0){
-  health = health - 0.0001
+  health = health - 0.01
   }else if(health = 0){
     health = 0
   }
 }
 
 
-function energy(){
-  
+function bliksem(){
+  //resize
+  energyImage[0].resize(60,0);
+  //   energyImage[1].resize(60,0);
+  // energyImage[2].resize(60,0);
+  // energyImage[3].resize(60,0);
+  // energyImage[4].resize(60,0);
+  // energyImage[5].resize(60,0);
+  // energyImage[6].resize(60,0);
+  // energyImage[7].resize(60,0);
+  // energyImage[8].resize(60,0);
+  // energyImage[9].resize(60,0);
+  // energyImage[10].resize(60,0);
+  // energyImage[11].resize(60,0);
+  // energyImage[12].resize(60,0);
+  // energyImage[13].resize(60,0);
+  // energyImage[14].resize(60,0);
+  // energyImage[15].resize(60,0);
+  // energyImage[16].resize(60,0);
+  // energyImage[17].resize(60,0);
+  // energyImage[18].resize(60,0);
+
+if(energy <= 100 && energy >= 90.909090909090909090909090909091){
+  image(energyImage[0],1,70);
+}
+// else if(energy <= 90.909090909090909090909090909091 && energy >= 81.818181818181818181818181818182){
+//   image(energyImage[1],1,70);
+// }else if(energy <= 81.818181818181818181818181818182 && energy >= 72.727272727272727272727272727273){
+//   image(energyImage[2],1,70);
+// }else if(energy <= 72.727272727272727272727272727273 && energy >= 63.636363636363636363636363636364){
+//   image(energyImage[3],1,70);
+// }else if(energy <= 63.636363636363636363636363636364 && energy >= 54.545454545454545454545454545455){
+//   image(energyImage[4],1,70);
+// }else if(energy <= 54.545454545454545454545454545455 && energy >= 45.454545454545454545454545454545){
+//   image(energyImage[3],1,70);
+// }else if(energy <= 45.454545454545454545454545454545 && energy >= 36.363636363636363636363636363636){
+//   image(energyImage[4],1,70);
+// }else if(energy <= 36.363636363636363636363636363636 && energy >= 27.272727272727272727272727272727){
+//   image(energyImage[5],1,70);
+// }else if(energy <= 27.272727272727272727272727272727 && energy >= 18.181818181818181818181818181818){
+//   image(energyImage[6],1,70);
+// }else if(energy <= 18.181818181818181818181818181818 && energy >= 9.090909090909090909090909090909){
+//   image(energyImage[7],1,70);
+// }else if(energy <= 9.090909090909090909090909090909 && energy >= 9.090909090909090909090909090909){
+//   image(energyImage[8],1,70);
+// }else if(energy <= 39.5 && energy >= 34){
+//   image(energyImage[9],1,70);
+// }else if(energy <= 34 && energy >= 28.5){
+//   image(energyImage[10],1,70);
+// }else if(energy <= 28.5 && energy >= 23){
+//   image(energyImage[11],1,70);
+// }
+// else if(energy <= 23 && energy >= 17.5){
+//   image(energyImage[12],1,70);
+// }else if(energy <= 17.5 && energy >= 12){
+//   image(energyImage[13],1,70);
+// }else if(energy <= 12 && energy >= 6.5){
+//   image(energyImage[14],1,70);
+// }else if(energy <= 6.5 && energy >= 0){
+//   image(energyImage[15],1,70);
+//}
 }
