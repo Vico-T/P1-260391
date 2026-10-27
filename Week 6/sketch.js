@@ -9,12 +9,16 @@ let raccoonSpeed = 1;
 let shopper = [];
 let buttons = [];
 let bGround = [];
-let locaties = [{
-  woonkamer: bGround[0],
-  keuken: bGround[1],
-  // badkamer: badkamer,
-  // inventorie: inventorie,
-}]
+let berries = 0
+let dragonflys = 0
+let bandages = 0
+
+// let locaties = [{
+//   woonkamer: bGround[0],
+//   keuken: bGround[1],
+//   // badkamer: badkamer,
+//   // inventorie: inventorie,
+// }]
 let press = 0;
 let item = 0;
 
@@ -31,35 +35,29 @@ function preload() {
   //bliksem
   energyImage.push(loadImage('energy/bliksemFull.png'));
   energyImage.push(loadImage('energy/bliksem-1.png'));
-  // energyImage.push(loadImage('energy/bliksem-2.png'));
   energyImage.push(loadImage('energy/bliksem-3.png'));
-  // energyImage.push(loadImage('energy/bliksem-4.png'));
   energyImage.push(loadImage('energy/bliksem-5.png'));
-  // energyImage.push(loadImage('energy/bliksem-6.png'));
   energyImage.push(loadImage('energy/bliksem-7.png'));
-  // energyImage.push(loadImage('energy/bliksem-8.png'));
   energyImage.push(loadImage('energy/bliksem-9.png'));
-  // energyImage.push(loadImage('energy/bliksem-10.png'));
   energyImage.push(loadImage('energy/bliksem-11.png'));
-  // energyImage.push(loadImage('energy/bliksem-12.png'));
   energyImage.push(loadImage('energy/bliksem-13.png'));
-  // energyImage.push(loadImage('energy/bliksem-14.png'));
   energyImage.push(loadImage('energy/bliksem-15.png'));
-  // energyImage.push(loadImage('energy/bliksem-16.png'));
   energyImage.push(loadImage('energy/bliksem-17.png'));
-  // energyImage.push(loadImage('energy/bliksem-18.png'));
   energyImage.push(loadImage('energy/bliksemEmpty.png'));
-  
+
+
+  bg = loadImage('background/livingRoom.png');
   bGround.push(loadImage('background/livingRoom.png'));
   bGround.push(loadImage('background/keuken.png'));
+  bGround.push(loadImage('background/bathroom.png'));
+  bGround.push(loadImage('background/bed.png'));
   shopper.push(loadImage('shop/berry.png'));
   shopper.push(loadImage('shop/dragonfly.png'));
   shopper.push(loadImage('shop/bandage.png'));
   raccoon.push(loadImage('raccoon/wasbeer/happyRaccoon.gif'));
   raccoon.push(loadImage('raccoon/wasbeer/walkingRaccoonLeft.gif'));
   raccoon.push(loadImage('raccoon/wasbeer/walkingRaccoonRight.gif'));
-
-
+  raccoon.push(loadImage('raccoon/wasbeer/deadRaccoon.gif'));
 }
 
 
@@ -79,19 +77,19 @@ function setup() {
   berrieButton = createButton("berries");
   berrieButton.position(695, 60);
   berrieButton.size(70, 20);
-  berrieButton.mousePressed(item);
+  berrieButton.mousePressed(berrie);
   buttons.push(berrieButton);
 
   dragonflyButton = createButton("dragonfly");
   dragonflyButton.position(695, 100);
   dragonflyButton.size(70, 20);
-  dragonflyButton.mousePressed(item);
+  dragonflyButton.mousePressed(dragonfly);
   buttons.push(dragonflyButton);
 
   bandageButton = createButton("bandage");
   bandageButton.position(695, 140);
   bandageButton.size(70, 20);
-  bandageButton.mousePressed(item);
+  bandageButton.mousePressed(bandage);
   buttons.push(bandageButton);
 
   //inventorybuttons
@@ -101,18 +99,52 @@ function setup() {
   invButton.mousePressed(invPressed);
   buttons.push(invButton);
 
+  //inventory use
+  berrieUse = createButton();
+  berrieUse.position(735, 110);
+  berrieUse.size(30, 20);
+  berrieUse.html("use");
+  berrieUse.mousePressed(berrieHunger);
+  buttons.push(berrieUse);
 
-  //bowlen
-  bowlButton = createButton("bowlen");
-  bowlButton.position(700, 105);
-  bowlButton.size(100, 30);
-  bowlButton.mousePressed(bowlPressed);
-  buttons.push(bowlButton);
+  bandageUse = createButton();
+  bandageUse.position(735, 180);
+  bandageUse.size(30, 20);
+  bandageUse.html("use");
+  bandageUse.mousePressed(bandageHealth);
+  buttons.push(bandageUse);
+
+
+  //background
+  homeButton = createButton("home");
+  homeButton.position(300, 730);
+  homeButton.size(200, 60);
+  homeButton.mousePressed(woonkamer);
+  buttons.push(homeButton);
+
+  keukenButton = createButton("kitchen");
+  keukenButton.position(50, 730);
+  keukenButton.size(200, 60);
+  keukenButton.mousePressed(keuken);
+  buttons.push(keukenButton)
+
+  toiletButton = createButton("bathroom")
+  toiletButton.position(550, 730);
+  toiletButton.size(200, 60);
+  toiletButton.mousePressed(toilet);
+  buttons.push(toiletButton)
+
+  bedButton = createButton();
+  bedButton.position(600, 480);
+  bedButton.size(100, 100);
+  bedButton.style('opacity', '0');
+  bedButton.mousePressed(sleeping);
+  buttons.push(bedButton);
 }
 
 
 function draw() {
-  background(bGround[0]);
+  background(bg)
   //resize
   shopper[0].resize(30, 0);
   shopper[1].resize(30, 0);
@@ -120,6 +152,7 @@ function draw() {
   raccoon[0].resize(150, 0);
   raccoon[1].resize(150, 0);
   raccoon[2].resize(150, 0);
+  raccoon[3].resize(120, 0);
 
   //bars
   heart();
@@ -129,24 +162,23 @@ function draw() {
 
   if (press == 0) {
     berrieButton.hide();
+    berrieUse.hide()
     dragonflyButton.hide();
+    // dragonflyUse.hide();
     bandageButton.hide();
+    bandageUse.hide();
     invButton.show();
     shopButton.show();
-    bowlButton.show()
   } else if (press == 1) {
     shop();
     berrieButton.show();
     dragonflyButton.show();
     bandageButton.show();
     invButton.hide();
-    bowlButton.hide();
   } else if (press == 2) {
     inventory();
     shopButton.hide();
-    bowlButton.hide();
   } else if (press == 3) {
-    bowl();
     shopButton.hide();
     invButton.hide();
   }
@@ -155,8 +187,24 @@ function draw() {
   speed();
   racImage();
 }
+function keuken() {
+  bg = loadImage('background/keuken.png');
+}
+
+function woonkamer() {
+  bg = loadImage('background/livingRoom.png');
+}
+
+function toilet() {
+  bg = loadImage('background/bathroom.png');
+}
+
+function sleeping() {
+  bg = loadImage('background/bed.png');
+}
 
 function speed() {
+
   if (raccoonWalkX >= 640 || raccoonWalkX <= 40) {
     raccoonSpeed = raccoonSpeed * -1
   }
@@ -165,13 +213,18 @@ function speed() {
 
 
 function racImage() {
-  if (raccoonWalkX >= 640) {
-    raccoonImage = 1
+  if (health >= 1) {
+    if (raccoonWalkX >= 640) {
+      raccoonImage = 1
+    }
+    if (raccoonWalkX <= 40) {
+      raccoonImage = 2
+    }
+    image(raccoon[raccoonImage], raccoonWalkX, 590);
+  } else if (health <= 0) {
+    (image(raccoon[3], raccoonWalkX, 610));
+    raccoonSpeed = 0
   }
-  if (raccoonWalkX <= 40) {
-    raccoonImage = 2
-  }
-  image(raccoon[raccoonImage], raccoonWalkX, 550);
 }
 
 
@@ -199,9 +252,31 @@ function shop() {
 }
 
 function berrie() {
-  item += 1
+  berries += 1
 }
 
+function berrieHunger() {
+  if (berries > 0) {
+    berries -= 1
+  } else (berries = 0);
+}
+
+function dragonfly() {
+  dragonflys += 1
+}
+
+function bandage() {
+  bandages += 1
+}
+
+function bandageHealth() {
+  if (bandages > 0) {
+    bandages -= 1
+    health += 15
+  }else if (bandages = 0){
+    bandages = 0;
+  }
+}
 
 function invPressed() {
   press += 2
@@ -217,26 +292,15 @@ function inventory() {
   textSize(35);
   //berries
   image(shopper[0], 695, 95);
-  text("0", 760, 120);
+  text(berries, 760, 120);
   //dragonfly
   image(shopper[1], 695, 140);
-  text("0", 760, 160);
+  text(dragonflys, 760, 160);
   //bandage
   image(shopper[2], 695, 170);
-  text("0", 760, 200);
+  text(bandages, 760, 200);
 }
 
-function bowlPressed() {
-  press += 3
-  if (press >= 6) {
-    press = 0
-  }
-}
-
-function bowl() {
-  fill("black");
-  square(100, 100, 600);
-}
 
 function heart() {
   //resize
@@ -250,9 +314,9 @@ function heart() {
   wellBeing[7].resize(60, 0);
   // wellBeing[8].resize(60, 0);
 
-  if (health <= 100 && health >= 87.5) {
+  if (health >= 87.5) {
     image(wellBeing[0], 1, 1);
-  } 
+  }
   else if (health <= 87.5 && health >= 75) {
     image(wellBeing[1], 1, 1);
   } else if (health <= 75 && health >= 62.5) {
@@ -267,20 +331,21 @@ function heart() {
     image(wellBeing[6], 1, 1);
   } else if (health <= 12.5 && health >= -1) {
     image(wellBeing[7], 1, 1);
-  } else if (health = 0) {
+  } else if (health == 0) {
     image(wellBeing[8], 1, 1);
   }
-  if(health >= 0){
-  health = health - 0.01
-  }else if(health = 0){
+  if (health >= 0) {
+    health = health - 0.1
+  } else if (health == 0) {
     health = 0
   }
+  console.log(health);
 }
 
 
-function bliksem(){
+function bliksem() {
   //resize
-  energyImage[0].resize(60,0);
+  energyImage[0].resize(60, 0);
   //   energyImage[1].resize(60,0);
   // energyImage[2].resize(60,0);
   // energyImage[3].resize(60,0);
@@ -300,43 +365,43 @@ function bliksem(){
   // energyImage[17].resize(60,0);
   // energyImage[18].resize(60,0);
 
-if(energy <= 100 && energy >= 90.909090909090909090909090909091){
-  image(energyImage[0],1,70);
-}
-// else if(energy <= 90.909090909090909090909090909091 && energy >= 81.818181818181818181818181818182){
-//   image(energyImage[1],1,70);
-// }else if(energy <= 81.818181818181818181818181818182 && energy >= 72.727272727272727272727272727273){
-//   image(energyImage[2],1,70);
-// }else if(energy <= 72.727272727272727272727272727273 && energy >= 63.636363636363636363636363636364){
-//   image(energyImage[3],1,70);
-// }else if(energy <= 63.636363636363636363636363636364 && energy >= 54.545454545454545454545454545455){
-//   image(energyImage[4],1,70);
-// }else if(energy <= 54.545454545454545454545454545455 && energy >= 45.454545454545454545454545454545){
-//   image(energyImage[3],1,70);
-// }else if(energy <= 45.454545454545454545454545454545 && energy >= 36.363636363636363636363636363636){
-//   image(energyImage[4],1,70);
-// }else if(energy <= 36.363636363636363636363636363636 && energy >= 27.272727272727272727272727272727){
-//   image(energyImage[5],1,70);
-// }else if(energy <= 27.272727272727272727272727272727 && energy >= 18.181818181818181818181818181818){
-//   image(energyImage[6],1,70);
-// }else if(energy <= 18.181818181818181818181818181818 && energy >= 9.090909090909090909090909090909){
-//   image(energyImage[7],1,70);
-// }else if(energy <= 9.090909090909090909090909090909 && energy >= 9.090909090909090909090909090909){
-//   image(energyImage[8],1,70);
-// }else if(energy <= 39.5 && energy >= 34){
-//   image(energyImage[9],1,70);
-// }else if(energy <= 34 && energy >= 28.5){
-//   image(energyImage[10],1,70);
-// }else if(energy <= 28.5 && energy >= 23){
-//   image(energyImage[11],1,70);
-// }
-// else if(energy <= 23 && energy >= 17.5){
-//   image(energyImage[12],1,70);
-// }else if(energy <= 17.5 && energy >= 12){
-//   image(energyImage[13],1,70);
-// }else if(energy <= 12 && energy >= 6.5){
-//   image(energyImage[14],1,70);
-// }else if(energy <= 6.5 && energy >= 0){
-//   image(energyImage[15],1,70);
-//}
+  if (energy <= 100 && energy >= 90.909090909090909090909090909091) {
+    image(energyImage[0], 1, 70);
+  }
+  // else if(energy <= 90.909090909090909090909090909091 && energy >= 81.818181818181818181818181818182){
+  //   image(energyImage[1],1,70);
+  // }else if(energy <= 81.818181818181818181818181818182 && energy >= 72.727272727272727272727272727273){
+  //   image(energyImage[2],1,70);
+  // }else if(energy <= 72.727272727272727272727272727273 && energy >= 63.636363636363636363636363636364){
+  //   image(energyImage[3],1,70);
+  // }else if(energy <= 63.636363636363636363636363636364 && energy >= 54.545454545454545454545454545455){
+  //   image(energyImage[4],1,70);
+  // }else if(energy <= 54.545454545454545454545454545455 && energy >= 45.454545454545454545454545454545){
+  //   image(energyImage[3],1,70);
+  // }else if(energy <= 45.454545454545454545454545454545 && energy >= 36.363636363636363636363636363636){
+  //   image(energyImage[4],1,70);
+  // }else if(energy <= 36.363636363636363636363636363636 && energy >= 27.272727272727272727272727272727){
+  //   image(energyImage[5],1,70);
+  // }else if(energy <= 27.272727272727272727272727272727 && energy >= 18.181818181818181818181818181818){
+  //   image(energyImage[6],1,70);
+  // }else if(energy <= 18.181818181818181818181818181818 && energy >= 9.090909090909090909090909090909){
+  //   image(energyImage[7],1,70);
+  // }else if(energy <= 9.090909090909090909090909090909 && energy >= 9.090909090909090909090909090909){
+  //   image(energyImage[8],1,70);
+  // }else if(energy <= 39.5 && energy >= 34){
+  //   image(energyImage[9],1,70);
+  // }else if(energy <= 34 && energy >= 28.5){
+  //   image(energyImage[10],1,70);
+  // }else if(energy <= 28.5 && energy >= 23){
+  //   image(energyImage[11],1,70);
+  // }
+  // else if(energy <= 23 && energy >= 17.5){
+  //   image(energyImage[12],1,70);
+  // }else if(energy <= 17.5 && energy >= 12){
+  //   image(energyImage[13],1,70);
+  // }else if(energy <= 12 && energy >= 6.5){
+  //   image(energyImage[14],1,70);
+  // }else if(energy <= 6.5 && energy >= 0){
+  //   image(energyImage[15],1,70);
+  //}
 }
