@@ -280,15 +280,17 @@ function draw() {
   }
 
   //raccoon
-  if(showRaccoon == true || sleepingRaccoon == 1){
-  speed();
-  racImage();
-  }else{}
+  if (showRaccoon == true || sleepingRaccoon == 1) {
+    speed();
+    racImage();
+  } else { }
 
-  if(begining == 0){
-    rect(185,275, 480, 140);
-    text("Welcome\n If you press the orange couch you will sleep.\n If you press the bath you will go in bath.\n And if you press a drawer your inventory will open.\n Press home to start.", 200,300);
+  if (begining == 0) {
+    rect(185, 275, 480, 140);
+    text("Welcome\n If you press the orange couch you will sleep.\n If you press the bath you will go in bath.\n And if you press a drawer your inventory will open.\n Press home to start.", 200, 300);
   }
+
+  console.log(press)
 }
 
 //backgrounds
@@ -305,9 +307,10 @@ function woonkamer() {
   buitenButten.show();
   sleepingRaccoon += 1
   begining += 1
-  if(raccoonData.health <= 0){
+  if (raccoonData.health <= 0) {
     restartButton.show();
-  }else {restartButton.hide();}
+  } else { restartButton.hide(); }
+  press = 0
 }
 
 function keuken() {
@@ -354,7 +357,7 @@ function sleeping() {
   homeButton.show();
   keukenButton.hide();
   buitenButten.hide();
-sleepingRaccoon += 1
+  sleepingRaccoon += 1
 }
 
 function inBad() {
@@ -365,37 +368,37 @@ function inBad() {
   invButton.hide();
   bg = loadImage('raccoon/wasbeerInBad.gif');
   showRaccoon = false;
-  if(raccoonData.happines <= 99 && raccoonData.health <= 99);
+  if (raccoonData.happines <= 99 && raccoonData.health <= 99);
   raccoonData.happines = raccoonData.happines += 0.1
   raccoonData.health = raccoonData.health += 0.5
 }
 
 //raccoon
 function speed() {
-  if(raccoonData.health >= 1){
-  if (raccoonWalkX >= 640 || raccoonWalkX <= 40) {
-    raccoonSpeed = raccoonSpeed * -1
+  if (raccoonData.health >= 1) {
+    if (raccoonWalkX >= 640 || raccoonWalkX <= 40) {
+      raccoonSpeed = raccoonSpeed * -1
+    }
+    raccoonWalkX = raccoonWalkX + raccoonSpeed
   }
-  raccoonWalkX = raccoonWalkX + raccoonSpeed
-}
-else{raccoonSpeed = 0}
+  else { raccoonSpeed = 0 }
 }
 
 function racImage() {
-    if(raccoonData.health >= 1){
-      if (raccoonWalkX >= 640) {
-        raccoonImage = 1
-      }
-      if (raccoonWalkX <= 40) {
-        raccoonImage = 2
-      }
-      image(raccoon[raccoonImage], raccoonWalkX, 590);
-    } else if (raccoonData.health <= 1) {
-      image(raccoon[5], raccoonWalkX, 610);
-      death();
-      // raccoonSpeed = 0
+  if (raccoonData.health >= 1) {
+    if (raccoonWalkX >= 640) {
+      raccoonImage = 1
     }
+    if (raccoonWalkX <= 40) {
+      raccoonImage = 2
+    }
+    image(raccoon[raccoonImage], raccoonWalkX, 590);
+  } else if (raccoonData.health <= 1) {
+    image(raccoon[5], raccoonWalkX, 610);
+    death();
+    // raccoonSpeed = 0
   }
+}
 
 //shop
 function shoppressed() {
@@ -587,7 +590,7 @@ function bliksem() {
     raccoonData.health = raccoonData.health - 0
   } else if (raccoonData.energy <= 0) {
     raccoonData.energy = 0
-  } else if(sleepingRaccoon == 1){
+  } else if (sleepingRaccoon == 1) {
     raccoonData.energy = raccoonData.energy + 2
   }
 }
@@ -629,7 +632,7 @@ function geluk() {
     raccoonData.happines = 0
   } else if (showRaccoon == false) {
     raccoonData.happines = raccoonData.happines + 0.08
-  } else if(sleepingRaccoon == 1){
+  } else if (sleepingRaccoon == 1) {
     raccoonData.happines = raccoonData.happines + 0.9
   }
 }
@@ -694,7 +697,7 @@ function gameStart() {
   text('score ' + score, 380, 30);
   image(shopper[0], x, y);
 
-  image(raccoon[7],mouseX,height-85);
+  image(raccoon[7], mouseX, height - 85);
   y = y + gameSpeed
   if (y > height) {
     minigameDeath();
@@ -766,10 +769,10 @@ function restart() {
     raccoonData.dragonflys = 0,
     raccoonData.bandages = 0,
     raccoonData.points = 0
-    raccoonSpeed = 1
+  raccoonSpeed = 1
   restartButton.hide();
 }
 
-function death(){
+function death() {
   restartButton.show();
 }
