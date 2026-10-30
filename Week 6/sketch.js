@@ -19,21 +19,18 @@ let raccoonSpeed = 1;
 let shopper = [];
 let buttons = [];
 let bGround = [];
-let press = 0
-let showRaccoon = true
+let press = 0;
+let showRaccoon = true;
+let begining = 0;
 //locatie
-let locatie = 0
-
-let sleepingRaccoon = 0
-
-let begin = 0
-
+let locatie = 0;
+let sleepingRaccoon = 0;
 //minigame
-let y = -40
-let screen = 0
-let x = 400
-let gameSpeed = 200
-let score = 0
+let y = -40;
+let screen = 0;
+let x = 400;
+let gameSpeed = 200;
+let score = 0;
 
 function preload() {
   //heart
@@ -95,7 +92,6 @@ function preload() {
   raccoon.push(loadImage('raccoon/wasbeer/basketRaccoon.png'));
 }
 
-
 function setup() {
 
   raccoonData = getItem("raccoonData")
@@ -123,30 +119,31 @@ function setup() {
   buttons.push(shopButton);
 
   //inventorybuttons
-  invButton = createButton("inventorie");
-  invButton.position(700, 60);
-  invButton.size(100, 30);
+  invButton = createButton();
+  invButton.position(400, 480);
+  invButton.size(140, 140);
+  invButton.style('opacity', '0')
   invButton.mousePressed(invPressed);
   buttons.push(invButton);
 
   //inventory use
   berrieUse = createButton();
-  berrieUse.position(735, 110);
-  berrieUse.size(30, 20);
+  berrieUse.position(445, 495);
+  berrieUse.size(60, 30);
   berrieUse.html("use");
   berrieUse.mousePressed(berrieHunger);
   buttons.push(berrieUse);
 
   dragonflyUse = createButton();
-  dragonflyUse.position(735, 140);
-  dragonflyUse.size(30, 20);
+  dragonflyUse.position(445, 535);
+  dragonflyUse.size(60, 30);
   dragonflyUse.html("use");
   dragonflyUse.mousePressed(dragonflyHunger);
   buttons.push(dragonflyUse);
 
   bandageUse = createButton();
-  bandageUse.position(735, 180);
-  bandageUse.size(30, 20);
+  bandageUse.position(445, 585);
+  bandageUse.size(60, 30);
   bandageUse.html("use");
   bandageUse.mousePressed(bandageHealth);
   buttons.push(bandageUse);
@@ -223,7 +220,6 @@ function setup() {
   startButton.mousePressed(progress);
 }
 
-
 function draw() {
   storeItem("raccoonData", raccoonData);
   background(bg)
@@ -255,9 +251,11 @@ function draw() {
     }
   }
 
+  //points
   textSize(20);
   text("coins: " + raccoonData.points, 600, 30)
 
+  //inventory en shop
   if (press == 0) {
     berrieButton.hide();
     berrieUse.hide()
@@ -281,11 +279,16 @@ function draw() {
     bandageUse.show();
   }
 
-
-
   //raccoon
+  if(showRaccoon == true || sleepingRaccoon == 1){
   speed();
   racImage();
+  }else{}
+
+  if(begining == 0){
+    rect(185,275, 480, 140);
+    text("Welcome\n If you press the orange couch you will sleep.\n If you press the bath you will go in bath.\n And if you press a drawer your inventory will open.\n Press home to start.", 200,300);
+  }
 }
 
 //backgrounds
@@ -297,9 +300,11 @@ function woonkamer() {
   toiletButton.show();
   badButton.hide();
   bedButton.show();
+  invButton.hide();
   startButton.hide();
   buitenButten.show();
-  sleepingRaccoon = 0
+  sleepingRaccoon += 1
+  begining += 1
   if(raccoonData.health <= 0){
     restartButton.show();
   }else {restartButton.hide();}
@@ -314,6 +319,7 @@ function keuken() {
   buitenButten.hide();
   bedButton.hide();
   badButton.hide();
+  invButton.show();
 }
 
 function toilet() {
@@ -343,13 +349,12 @@ function buiten() {
 }
 
 function sleeping() {
-  bg = loadImage('background/bed.png');
+  bg = loadImage('background/sleeping.png');
   toiletButton.hide();
   homeButton.show();
   keukenButton.hide();
   buitenButten.hide();
-sleepingRaccoon = 1
-
+sleepingRaccoon += 1
 }
 
 function inBad() {
@@ -367,10 +372,13 @@ function inBad() {
 
 //raccoon
 function speed() {
+  if(raccoonData.health >= 1){
   if (raccoonWalkX >= 640 || raccoonWalkX <= 40) {
     raccoonSpeed = raccoonSpeed * -1
   }
   raccoonWalkX = raccoonWalkX + raccoonSpeed
+}
+else{raccoonSpeed = 0}
 }
 
 function racImage() {
@@ -382,12 +390,12 @@ function racImage() {
         raccoonImage = 2
       }
       image(raccoon[raccoonImage], raccoonWalkX, 590);
-    } else if (raccoonData.health <= 0) {
+    } else if (raccoonData.health <= 1) {
       image(raccoon[5], raccoonWalkX, 610);
-      raccoonSpeed = 0
+      death();
+      // raccoonSpeed = 0
     }
   }
-
 
 //shop
 function shoppressed() {
@@ -475,19 +483,19 @@ function invPressed() {
 }
 
 function inventory() {
-  fill("blue");
-  rect(690, 90, 100, 130);
+  fill("brown");
+  rect(395, 480, 140, 140);
   fill("black");
   textSize(35);
   //berries
-  image(shopper[0], 695, 95);
-  text(raccoonData.berries, 760, 120);
+  image(shopper[0], 400, 485);
+  text(raccoonData.berries, 510, 510);
   //dragonfly
-  image(shopper[1], 695, 140);
-  text(raccoonData.dragonflys, 760, 160);
+  image(shopper[1], 400, 530);
+  text(raccoonData.dragonflys, 510, 555);
   //bandage
-  image(shopper[2], 685, 170);
-  text(raccoonData.bandages, 760, 200);
+  image(shopper[2], 395, 575);
+  text(raccoonData.bandages, 510, 600);
 }
 
 //bars
@@ -521,7 +529,7 @@ function heart() {
   }
   if (showRaccoon === true && sleepingRaccoon == 0) {
     if (raccoonData.health > 0 && raccoonData.trek > 0) {
-      raccoonData.health = raccoonData.health - /*0.01*/ 0.1
+      raccoonData.health = raccoonData.health - 0.01
     } else if (raccoonData.health > 0 && raccoonData.trek <= 0) {
       raccoonData.health = raccoonData.health - 0.05
     }
@@ -530,9 +538,9 @@ function heart() {
   }
   else if (raccoonData.health == 0) {
     raccoonData.health = 0
+    begin += 1
   }
 }
-
 
 function bliksem() {
   //resize
@@ -702,9 +710,9 @@ function gameStart() {
 }
 
 function minigameDeath() {
-  raccoonData.happines + 30;
-  raccoonData.energy - 5;
-  raccoonData.trek - 10;
+  raccoonData.happines += 30;
+  raccoonData.energy -= 5;
+  raccoonData.trek -= 10;
   screen = 2
   if (score >= 1 && score <= 5) {
     raccoonData.points += 1
@@ -748,6 +756,7 @@ function reset() {
   y = -20
 }
 
+//death
 function restart() {
   raccoonData.health = 100,
     raccoonData.energy = 100,
@@ -757,15 +766,10 @@ function restart() {
     raccoonData.dragonflys = 0,
     raccoonData.bandages = 0,
     raccoonData.points = 0
-    begin + 1
-    if(begin == 0){
-    restartButton.hide();
-    if(raccoonData.health <= 0){
-      begin +1;
-    }
-}if(begin == 1){
-  restartButton.show();
-}if(begin >= 2){
-  begin = 0
+    raccoonSpeed = 1
+  restartButton.hide();
 }
+
+function death(){
+  restartButton.show();
 }
